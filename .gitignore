@@ -1,0 +1,9 @@
+node_modules/
+android/
+ios/
+www/js/cap/
+*.jks
+*.keystore
+*.apk
+*.aab
+.DS_Store

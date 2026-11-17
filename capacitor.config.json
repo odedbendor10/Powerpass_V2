@@ -1,0 +1,22 @@
+{
+  "appId": "il.co.powerpass.app",
+  "appName": "POWERPASS",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false,
+    "backgroundColor": "#151c36"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "style": "DARK"
+    },
+    "CapacitorHttp": {
+      "enabled": false
+    }
+  }
+}

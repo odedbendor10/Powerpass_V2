@@ -1,0 +1,1285 @@
+/* ---------- גופן Assistant, משקלים 400/600 (קובצי Google Fonts, רישיון OFL, מוגשים מהאתר עצמו) ---------- */
+@font-face { font-family: 'Assistant'; font-style: normal; font-display: swap; font-weight: 400; src: url(fonts/assistant-hebrew-400-normal.woff2) format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: 'Assistant'; font-style: normal; font-display: swap; font-weight: 400; src: url(fonts/assistant-latin-400-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Assistant'; font-style: normal; font-display: swap; font-weight: 600; src: url(fonts/assistant-hebrew-600-normal.woff2) format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: 'Assistant'; font-style: normal; font-display: swap; font-weight: 600; src: url(fonts/assistant-latin-600-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* סימולטור מבחני רישוי בחשמל – עיצוב צבעוני
+   הצבעים הראשיים מוגדרים בלוח הבקרה (--mq-dark / --mq-primary / --mq-accent / --mq-info) */
+.moeqs {
+	--mq-dark: #151c36;
+	--mq-primary: #bd5226;
+	--mq-accent: #f4b400;
+	--mq-info: #2563eb;
+	--mq-ink: #1c2233;
+	--mq-ink-soft: #5b6375;
+	--mq-paper: #ffffff;
+	--mq-cream: #faf6ef;
+	--mq-line: #e6e1d8;
+	--mq-ok: #15803d;
+	--mq-ok-bg: #e7f6ec;
+	--mq-bad: #b91c1c;
+	--mq-bad-bg: #fdecec;
+	--mq-r: 14px;
+	--mq-shadow: 0 10px 30px -12px rgba(20, 28, 54, .25);
+	direction: rtl;
+	text-align: right;
+	color: var(--mq-ink);
+	font-size: 17px;
+	line-height: 1.6;
+	box-sizing: border-box;
+	max-width: 1120px;
+	margin: 0 auto 40px;
+}
+.moeqs *, .moeqs *::before, .moeqs *::after { box-sizing: border-box; }
+.moeqs a { color: inherit; }
+.moeqs h1, .moeqs h2, .moeqs h3 { font-family: inherit; letter-spacing: normal; text-transform: none; }
+.moeqs button { font: inherit; }
+.moeqs :focus-visible { outline: 3px solid var(--mq-info); outline-offset: 2px; }
+
+/* ---------- כפתורים ---------- */
+.moeqs .moeqs-btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+	min-height: 44px; padding: 9px 22px; border-radius: 10px;
+	border: 2px solid var(--mq-dark); background: var(--mq-paper); color: var(--mq-dark);
+	text-decoration: none; cursor: pointer; line-height: 1.3; font-weight: 700;
+	text-transform: none; letter-spacing: 0; box-shadow: none; transition: transform .12s, filter .12s;
+}
+.moeqs .moeqs-btn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.05); }
+.moeqs .moeqs-btn:disabled { opacity: .4; cursor: default; }
+.moeqs .moeqs-primary, .moeqs .moeqs-cta { background: var(--mq-primary); border-color: var(--mq-primary); color: #fff; }
+.moeqs .moeqs-cta2 { background: var(--mq-accent); border-color: var(--mq-accent); color: #1c1c1c; }
+.moeqs .moeqs-ghost { background: transparent; border-color: rgba(255, 255, 255, .85); color: #fff; }
+.moeqs .moeqs-big { min-height: 52px; padding: 12px 28px; font-size: 1.05em; }
+.moeqs .moeqs-flagbtn.is-on { border-color: var(--mq-accent); background: color-mix(in srgb, var(--mq-accent) 18%, #fff); }
+.moeqs .moeqs-link {
+	background: none; border: 0; padding: 4px 0; cursor: pointer; font: inherit; font-weight: 600;
+	color: var(--mq-primary); text-decoration: underline; text-underline-offset: 3px;
+}
+.moeqs-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 18px 0 0; }
+.moeqs-note { color: var(--mq-ink-soft); margin: 0 0 16px; }
+
+/* ---------- רצועה כהה ברוחב מלא ---------- */
+.moeqs-band {
+	position: relative; overflow: hidden;
+	width: 100vw; margin-inline: calc(50% - 50vw);
+	background:
+		radial-gradient(circle at 12% 20%, color-mix(in srgb, var(--mq-info) 45%, transparent) 0, transparent 40%),
+		radial-gradient(circle at 88% 85%, color-mix(in srgb, var(--mq-primary) 40%, transparent) 0, transparent 38%),
+		var(--mq-dark);
+	color: #fff;
+}
+.moeqs-band::after {
+	content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .12;
+	background-image: linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+	background-size: 44px 44px;
+	mask-image: linear-gradient(to bottom, #000, transparent 85%);
+}
+.moeqs-band-sm { padding: 26px 20px; margin-bottom: 34px; text-align: center; }
+.moeqs-band-title { position: relative; z-index: 1; margin: 0; font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight: 800; }
+
+/* ---------- עמוד הבית ---------- */
+.moeqs-hero {
+	position: relative; z-index: 1; max-width: 1120px; margin: 0 auto;
+	display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: center;
+	padding: clamp(36px, 7vw, 88px) 20px;
+}
+.moeqs-pill {
+	display: inline-block; padding: 5px 14px; border-radius: 999px; font-size: .9em; font-weight: 700;
+	background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .3); margin-bottom: 16px;
+}
+.moeqs-hero-title { font-size: clamp(2.3rem, 5.6vw, 4rem); line-height: 1.08; margin: 0 0 18px; font-weight: 900; color: #fff; }
+.moeqs-hero-title span { color: var(--mq-accent); }
+.moeqs-hero-sub { font-size: 1.12em; color: rgba(255, 255, 255, .85); max-width: 34em; margin: 0; }
+.moeqs-sample-card {
+	background: var(--mq-paper); color: var(--mq-ink); border-radius: var(--mq-r); padding: 22px;
+	box-shadow: 0 24px 50px -20px rgba(0, 0, 0, .55); border-top: 6px solid var(--mq-accent);
+}
+.moeqs-statbar {
+	display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0 0 40px;
+	width: 100vw; margin-inline: calc(50% - 50vw); background: var(--mq-paper); border-bottom: 1px solid var(--mq-line);
+	padding: 22px max(20px, calc(50vw - 560px));
+}
+.moeqs-statbar div { text-align: center; display: flex; flex-direction: column; }
+.moeqs-statbar strong { font-size: 2.1em; line-height: 1.1; color: var(--mq-primary); font-weight: 900; font-variant-numeric: tabular-nums; }
+.moeqs-statbar div:nth-child(2) strong { color: var(--mq-info); }
+.moeqs-statbar div:nth-child(3) strong { color: var(--mq-ok); }
+.moeqs-statbar div:nth-child(4) strong { color: #7a5a00; }
+.moeqs-statbar span { color: var(--mq-ink-soft); font-weight: 600; }
+
+/* ---------- עמוד הסימולציות ---------- */
+.moeqs-sec { margin: 0 0 48px; }
+.moeqs-h { font-size: 1.55em; line-height: 1.25; margin: 0 0 18px; color: var(--mq-dark); font-weight: 900; }
+.moeqs-h::after { content: ""; display: block; width: 64px; height: 5px; border-radius: 3px; margin-top: 8px; background: linear-gradient(90deg, var(--mq-accent), var(--mq-primary)); }
+.moeqs-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.moeqs-card { background: var(--mq-paper); border: 1px solid var(--mq-line); border-radius: var(--mq-r); box-shadow: var(--mq-shadow); }
+.moeqs-lic { --lc: var(--mq-info); display: flex; flex-direction: column; overflow: hidden; padding: 0 0 22px; }
+.moeqs-lic-hand { --lc: var(--mq-primary); }
+.moeqs-lic-eng { --lc: var(--mq-ok); }
+.moeqs-lic-head { background: var(--lc); color: #fff; padding: 18px 22px 16px; margin-bottom: 16px; }
+.moeqs-lic-kicker { display: block; font-size: .85em; opacity: 1; font-weight: 700; color: #fff; }
+.moeqs-lic h3 { margin: 0; font-size: 1.5em; line-height: 1.2; font-weight: 900; color: #fff; }
+.moeqs-lic > .moeqs-facts, .moeqs-lic > .moeqs-actions, .moeqs-lic > .moeqs-link { margin-inline: 22px; }
+.moeqs-lic .moeqs-actions { margin-top: auto; padding-top: 14px; }
+.moeqs-lic .moeqs-primary { background: var(--lc); border-color: var(--lc); }
+.moeqs-lic .moeqs-btn:not(.moeqs-primary) { border-color: var(--lc); color: var(--lc); }
+.moeqs-lic > .moeqs-link { margin-top: 12px; align-self: flex-start; color: var(--lc); }
+.moeqs-facts { margin: 0 0 4px; padding: 0; list-style: none; }
+.moeqs-facts li { position: relative; padding-right: 26px; margin-bottom: 8px; }
+.moeqs-facts li::before {
+	content: "✓"; position: absolute; right: 0; top: .15em; width: 18px; height: 18px; border-radius: 50%;
+	background: var(--lc, var(--mq-ok)); color: #fff; font-size: 11px; font-weight: 900;
+	display: flex; align-items: center; justify-content: center;
+}
+.moeqs-personal { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.moeqs-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.moeqs .moeqs-tile {
+	--tc: var(--mq-info);
+	display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; text-decoration: none;
+	border-radius: var(--mq-r); background: color-mix(in srgb, var(--tc) 9%, #fff);
+	border: 1px solid color-mix(in srgb, var(--tc) 25%, #fff); border-right: 6px solid var(--tc);
+	transition: transform .12s, box-shadow .12s;
+}
+.moeqs .moeqs-tile:hover { transform: translateY(-2px); box-shadow: var(--mq-shadow); }
+.moeqs-tile-name { font-weight: 800; line-height: 1.35; color: var(--mq-ink); }
+.moeqs-tile-count { font-size: .88em; font-weight: 700; color: color-mix(in srgb, var(--tc) 58%, #000); }
+
+.moeqs-ranges { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 10px; }
+.moeqs .moeqs-range {
+	display: block; text-align: center; padding: 11px 6px; text-decoration: none; font-variant-numeric: tabular-nums;
+	border-radius: 10px; background: var(--mq-dark); color: #fff; font-weight: 700;
+	direction: ltr; unicode-bidi: isolate; white-space: nowrap; transition: background .12s;
+}
+.moeqs .moeqs-range:nth-child(3n+2) { background: var(--mq-info); }
+.moeqs .moeqs-range:nth-child(3n) { background: var(--mq-primary); }
+.moeqs .moeqs-range:hover { background: var(--mq-accent); color: #1c1c1c; }
+
+.moeqs-box { background: var(--mq-cream); border: 1px solid var(--mq-line); border-radius: var(--mq-r); padding: 24px; max-width: 760px; }
+.moeqs-box-title { font-weight: 800; font-size: 1.1em; margin: 0; }
+
+/* ---------- סימולציה ---------- */
+.moeqs-quiz {
+	max-width: 900px; background: var(--mq-paper); border-radius: 18px; overflow: hidden;
+	box-shadow: var(--mq-shadow); border: 1px solid var(--mq-line); padding: clamp(16px, 4vw, 32px);
+	border-top: 8px solid var(--mq-primary);
+}
+.moeqs-title { margin: 0 0 6px; font-size: 1.6em; line-height: 1.25; color: var(--mq-dark); font-weight: 900; }
+.moeqs-sub { margin: 0 0 14px; color: var(--mq-ink-soft); }
+.moeqs-start .moeqs-facts { margin: 16px 0; }
+.moeqs-start .moeqs-facts li::before { background: var(--mq-primary); }
+.moeqs-modes { border: 0; padding: 0; margin: 14px 0 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+.moeqs-modes legend { padding: 0; margin-bottom: 8px; font-weight: 800; }
+.moeqs-mode { display: inline-flex; align-items: center; gap: 8px; border: 2px solid var(--mq-line); border-radius: 12px; padding: 10px 16px; cursor: pointer; font-weight: 600; }
+.moeqs-mode:has(input:checked) { border-color: var(--mq-primary); background: color-mix(in srgb, var(--mq-primary) 8%, #fff); }
+.moeqs-check { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; }
+.moeqs-check input { width: 18px; height: 18px; margin: 0; accent-color: var(--mq-primary); }
+
+.moeqs-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.moeqs-count { font-weight: 800; }
+.moeqs-qnum { font-size: 1.2em; color: var(--mq-dark); }
+.moeqs-pos { color: var(--mq-ink-soft); font-weight: 600; }
+.moeqs-timer {
+	font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; font-weight: 800;
+	padding: 4px 14px; border-radius: 999px; background: var(--mq-dark); color: #fff;
+}
+.moeqs-timer.moeqs-low { background: var(--mq-bad); }
+.moeqs-bar { height: 8px; background: color-mix(in srgb, var(--mq-dark) 10%, #fff); border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+.moeqs-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--mq-accent), var(--mq-primary)); transition: width .25s; }
+
+.moeqs-qcard { padding: 0; border: 0; box-shadow: none; }
+.moeqs-ref { margin: 0 0 6px; font-size: .85em; color: var(--mq-ink-soft); font-weight: 600; }
+.moeqs-q { font-size: 1.1em; line-height: 1.65; margin-bottom: 20px; outline: none; }
+.moeqs-text { display: block; white-space: pre-line; font-weight: 400; }
+.moeqs-text.is-bold { font-weight: 800; color: var(--mq-dark); }
+.moeqs-q .moeqs-text + .moeqs-text { margin-top: 2px; }
+.moeqs-img { display: block; max-width: 100%; height: auto; margin: 12px 0; border-radius: 8px; }
+
+.moeqs-answers { display: flex; flex-direction: column; gap: 10px; }
+.moeqs .moeqs-ans {
+	display: flex; align-items: flex-start; gap: 14px; width: 100%; text-align: right;
+	background: #fff; color: var(--mq-ink); border: 2px solid var(--mq-line); border-radius: 12px;
+	padding: 12px 14px; cursor: pointer; line-height: 1.5; font-weight: 500;
+	text-transform: none; letter-spacing: 0; box-shadow: none; transition: border-color .12s, background .12s;
+}
+.moeqs .moeqs-ans:hover:not([aria-disabled]) { border-color: var(--mq-info); background: color-mix(in srgb, var(--mq-info) 5%, #fff); }
+.moeqs .moeqs-ans[aria-disabled] { cursor: default; }
+.moeqs-ans-text { flex: 1; white-space: pre-line; padding-top: 3px; }
+.moeqs-ans-img { max-width: min(100%, 260px); height: auto; border-radius: 4px; }
+
+.moeqs-bubble {
+	flex: none; width: 32px; height: 32px; border-radius: 9px;
+	display: inline-flex; align-items: center; justify-content: center;
+	background: color-mix(in srgb, var(--mq-info) 12%, #fff); color: var(--mq-info);
+	font-weight: 900; font-size: .95em; transition: background .12s, color .12s;
+}
+.moeqs .moeqs-ans.is-picked { border-color: var(--mq-info); background: color-mix(in srgb, var(--mq-info) 8%, #fff); }
+.moeqs .moeqs-ans.is-picked .moeqs-bubble { background: var(--mq-info); color: #fff; }
+.moeqs .moeqs-ans.is-correct, .moeqs-rev-ans li.is-correct { border-color: var(--mq-ok); background: var(--mq-ok-bg); }
+.moeqs .moeqs-ans.is-correct .moeqs-bubble, .moeqs-rev-ans li.is-correct .moeqs-bubble { background: var(--mq-ok); color: #fff; }
+.moeqs .moeqs-ans.is-wrong, .moeqs-rev-ans li.is-wrong { border-color: var(--mq-bad); background: var(--mq-bad-bg); }
+.moeqs .moeqs-ans.is-wrong .moeqs-bubble, .moeqs-rev-ans li.is-wrong .moeqs-bubble { background: var(--mq-bad); color: #fff; }
+.moeqs-feedback { margin: 14px 0 0; font-weight: 800; padding: 10px 14px; border-radius: 10px; }
+.moeqs-feedback.is-correct { color: var(--mq-ok); background: var(--mq-ok-bg); }
+.moeqs-feedback.is-wrong { color: var(--mq-bad); background: var(--mq-bad-bg); }
+
+.moeqs-nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0; }
+.moeqs-nav .moeqs-primary { margin-inline-start: auto; }
+.moeqs-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; padding: 16px; border-radius: 12px; background: var(--mq-cream); }
+.moeqs .moeqs-cell {
+	min-width: 46px; height: 38px; padding: 0 6px; justify-self: center; position: relative;
+	border-radius: 9px; border: 1.5px solid var(--mq-line); background: #fff; color: var(--mq-ink-soft);
+	font-size: .85em; font-weight: 700; font-variant-numeric: tabular-nums; cursor: pointer; box-shadow: none;
+}
+.moeqs .moeqs-cell.is-answered { background: var(--mq-info); border-color: var(--mq-info); color: #fff; }
+.moeqs .moeqs-cell.is-correct { background: var(--mq-ok); border-color: var(--mq-ok); color: #fff; }
+.moeqs .moeqs-cell.is-wrong { background: var(--mq-bad); border-color: var(--mq-bad); color: #fff; }
+.moeqs .moeqs-cell.is-current { outline: 3px solid var(--mq-accent); outline-offset: 1px; }
+.moeqs .moeqs-cell.is-flag::after { content: "★"; position: absolute; top: -9px; left: -6px; color: var(--mq-accent); font-size: 15px; text-shadow: 0 0 2px #fff; }
+.moeqs-finish { text-align: center; margin: 16px 0 0; }
+
+/* בדיקה תוך כדי מענה */
+.moeqs-switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 700; font-size: .9em; margin-inline-start: auto; user-select: none; }
+.moeqs-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.moeqs-switch-ui { width: 40px; height: 22px; border-radius: 999px; background: #cfd3db; position: relative; transition: background .15s; flex: none; }
+.moeqs-switch-ui::after { content: ""; position: absolute; top: 3px; right: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: right .15s; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.moeqs-switch input:checked + .moeqs-switch-ui { background: var(--mq-ok); }
+.moeqs-switch input:checked + .moeqs-switch-ui::after { right: 21px; }
+.moeqs-switch input:focus-visible + .moeqs-switch-ui { outline: 3px solid var(--mq-info); outline-offset: 2px; }
+.moeqs .moeqs-checkbtn { background: var(--mq-ok); border-color: var(--mq-ok); color: #fff; }
+
+/* הסבר וסימוכין */
+.moeqs-explain { margin-top: 16px; padding: 14px 18px; border-radius: 12px; background: var(--mq-cream); border-right: 5px solid var(--mq-accent); }
+.moeqs-explain-title { margin: 0 0 6px; font-weight: 900; color: var(--mq-dark); }
+.moeqs-src-title { margin-top: 12px; font-size: .92em; }
+.moeqs-explain-body { font-size: .96em; line-height: 1.7; }
+.moeqs-sources { margin: 0; padding: 0 18px 0 0; font-size: .9em; }
+.moeqs-sources li { margin-bottom: 4px; }
+.moeqs-sources a { color: var(--mq-info); font-weight: 600; }
+.moeqs-explain-d { margin-top: 10px; }
+.moeqs-explain-d summary { cursor: pointer; font-weight: 800; color: var(--mq-info); }
+
+/* תוצאות: חותמת */
+.moeqs-timeup { background: var(--mq-bad-bg); color: var(--mq-bad); padding: 10px 14px; border-radius: 10px; font-weight: 700; }
+.moeqs-score { display: flex; align-items: center; gap: 22px; margin: 18px 0 10px; }
+.moeqs-score-num {
+	width: 124px; height: 124px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+	font-size: 2.8em; font-weight: 900; font-variant-numeric: tabular-nums;
+	border: 5px double currentColor; transform: rotate(-8deg);
+	box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 7px currentColor;
+}
+.moeqs-score-label { font-size: 1.7em; font-weight: 900; padding: 4px 16px; border: 3px solid currentColor; border-radius: 8px; transform: rotate(-4deg); letter-spacing: .02em; }
+.moeqs-score.is-pass { color: var(--mq-ok); }
+.moeqs-score.is-fail { color: var(--mq-bad); }
+.moeqs-summary { color: var(--mq-ink-soft); margin: 0 0 4px; }
+.moeqs-rev-title { margin: 30px 0 10px; font-size: 1.25em; font-weight: 900; color: var(--mq-dark); }
+.moeqs-review { list-style: none; margin: 0; padding: 0; }
+.moeqs-rev-item { border-top: 1px solid var(--mq-line); padding: 18px 0; }
+.moeqs-rev-item.is-bad > .moeqs-ref { color: var(--mq-bad); }
+.moeqs-rev-item.is-ok > .moeqs-ref { color: var(--mq-ok); }
+.moeqs-rev-item .moeqs-q { font-size: 1em; margin-bottom: 10px; }
+.moeqs-rev-ans { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.moeqs-rev-ans li { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; border: 2px solid transparent; border-radius: 10px; padding: 6px 10px; }
+.moeqs-rev-ans .moeqs-bubble { width: 28px; height: 28px; font-size: .85em; }
+.moeqs-tag { font-size: .8em; font-weight: 800; padding-top: 4px; }
+.moeqs-rev-ans li.is-correct .moeqs-tag { color: var(--mq-ok); }
+.moeqs-rev-ans li.is-wrong .moeqs-tag { color: var(--mq-bad); }
+.moeqs-none { padding: 16px 0; color: var(--mq-ok); font-weight: 700; }
+
+/* ---------- יומן ---------- */
+.moeqs-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 18px; }
+.moeqs-stats div { border-radius: var(--mq-r); padding: 16px 18px; display: flex; flex-direction: column; color: #fff; background: var(--mq-info); }
+.moeqs-stats div:nth-child(2) { background: var(--mq-primary); }
+.moeqs-stats div:nth-child(3) { background: var(--mq-ok); }
+.moeqs-stats div:nth-child(4) { background: var(--mq-dark); }
+.moeqs-stats strong { font-size: 2em; line-height: 1.1; font-weight: 900; font-variant-numeric: tabular-nums; }
+.moeqs-stats span { opacity: .9; font-size: .92em; font-weight: 600; }
+.moeqs-table-wrap { overflow-x: auto; border-radius: var(--mq-r); border: 1px solid var(--mq-line); }
+.moeqs-table { width: 100%; border-collapse: collapse; font-size: .95em; margin: 0; }
+.moeqs-table th, .moeqs-table td { text-align: right; padding: 11px 12px; border-bottom: 1px solid var(--mq-line); white-space: nowrap; }
+.moeqs-table th { background: var(--mq-dark); color: #fff; font-weight: 700; }
+.moeqs-table tr:nth-child(even) td { background: var(--mq-cream); }
+.moeqs-table tr.is-pass strong { color: var(--mq-ok); }
+.moeqs-table tr.is-fail strong { color: var(--mq-bad); }
+
+@media (max-width: 760px) {
+	.moeqs-hero { grid-template-columns: 1fr; }
+	.moeqs-statbar { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
+	.moeqs { font-size: 16px; }
+	.moeqs-quiz { border-radius: 0; border-left: 0; border-right: 0; }
+	.moeqs-nav .moeqs-btn { flex: 1 1 auto; }
+	.moeqs-score-num { width: 96px; height: 96px; font-size: 2.2em; }
+}
+@media (prefers-reduced-motion: reduce) { .moeqs * { transition: none !important; } }
+@media print { .moeqs-nav, .moeqs-map, .moeqs-finish, .moeqs-check { display: none; } }
+body:has(.moeqs-band) { overflow-x: clip; }
+
+.moeqs-sources-line { margin: 10px 0 0; font-size: .92em; color: var(--mq-ink-soft); }
+.moeqs-sources-line strong { color: var(--mq-dark); }
+.moeqs-sources-line a { color: var(--mq-info); font-weight: 600; }
+
+.moeqs-explain .moeqs-img { background: #fff; border: 1px solid var(--mq-line); border-radius: 8px; padding: 4px; margin: 8px 0 0; }
+
+/* ---------- טיימר לבחינה ---------- */
+.moeqs-cd { background: #fff; color: var(--mq-ink); border-radius: 14px; padding: 16px 20px 14px; max-width: 430px; margin: 22px 0 4px; text-align: center; box-shadow: 0 18px 40px -20px rgba(0, 0, 0, .55); }
+.moeqs-cd-wrap .moeqs-cd { margin-inline: auto; border: 1px solid var(--mq-line); }
+.moeqs-cd-title { margin: 0 0 2px; font-weight: 800; color: var(--mq-dark); }
+.moeqs-cd-for { margin: 0 0 12px; font-size: .88em; font-weight: 700; color: var(--mq-primary); }
+.moeqs-cd-boxes { display: flex; gap: 8px; justify-content: center; }
+.moeqs-cd-boxes > div { flex: 1; max-width: 86px; padding: 8px 4px 6px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--mq-primary) 28%, #fff); background: color-mix(in srgb, var(--mq-primary) 7%, #fff); }
+.moeqs-cd-boxes strong { display: block; font-size: 1.75em; line-height: 1.1; font-weight: 900; color: var(--mq-primary); font-variant-numeric: tabular-nums; }
+.moeqs-cd-boxes span { font-size: .8em; color: var(--mq-ink-soft); font-weight: 600; }
+.moeqs-cd-when { margin: 12px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: .9em; font-weight: 700; }
+
+/* כרטיסי רישיון */
+.moeqs-inline { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.moeqs-lic .moeqs-facts li a.moeqs-inline { color: var(--lc); font-weight: 600; }
+.moeqs .moeqs-quickbtn { border-radius: 999px; letter-spacing: .02em; }
+.moeqs-lic .moeqs-actions .moeqs-btn { flex: 1 1 auto; }
+
+/* ---------- מנויים ותשלום ---------- */
+.moeqs-mbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 22px; padding: 12px 16px; border-radius: 12px; background: var(--mq-cream); border: 1px solid var(--mq-line); border-right: 6px solid var(--mq-accent); font-weight: 600; }
+.moeqs-mbar.is-on { background: var(--mq-ok-bg); border-color: color-mix(in srgb, var(--mq-ok) 35%, #fff); border-right-color: var(--mq-ok); color: #14532d; }
+.moeqs-mbar .moeqs-btn { min-height: 38px; padding: 6px 18px; }
+.moeqs-plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; align-items: stretch; margin: 8px 0 18px; }
+.moeqs-plan { position: relative; overflow: hidden; display: flex; flex-direction: column; background: var(--mq-paper); border: 1px solid var(--mq-line); border-radius: 18px; box-shadow: var(--mq-shadow); }
+.moeqs-plan.is-popular { border: 2px solid var(--mq-primary); transform: translateY(-6px); }
+.moeqs-plan-head { background: var(--mq-dark); color: #fff; text-align: center; padding: 20px 16px 16px; }
+.moeqs-plan.is-popular .moeqs-plan-head { background: var(--mq-primary); }
+.moeqs-plan-head h3 { margin: 0; color: #fff; font-size: 1.35em; font-weight: 900; }
+.moeqs-plan-save { margin: 4px 0 0; font-size: .88em; font-weight: 700; color: var(--mq-accent); }
+.moeqs-plan.is-popular .moeqs-plan-save { color: #fff; }
+.moeqs-plan-ribbon { position: absolute; top: 18px; left: -42px; width: 150px; text-align: center; transform: rotate(-45deg); background: var(--mq-accent); color: #1c1c1c; font-size: .8em; font-weight: 900; padding: 3px 0; z-index: 2; }
+.moeqs-plan-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 24px; text-align: center; }
+.moeqs-plan-price { margin: 0; line-height: 1; display: flex; justify-content: center; align-items: flex-start; gap: 4px; direction: ltr; }
+.moeqs-plan-price strong { font-size: 3.4em; font-weight: 900; color: var(--mq-primary); font-variant-numeric: tabular-nums; }
+.moeqs-plan-price span { font-size: 1.3em; font-weight: 800; color: var(--mq-primary); margin-top: .3em; }
+.moeqs-plan-period { margin: 6px 0 14px; font-weight: 800; }
+.moeqs-plan-feat { list-style: none; margin: 0 0 20px; padding: 0; text-align: right; flex: 1; }
+.moeqs-plan-feat li { position: relative; padding: 10px 34px 10px 0; border-top: 1px dashed color-mix(in srgb, var(--mq-accent) 70%, #fff); }
+.moeqs-plan-feat li::before { content: "✓"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--mq-ink); font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+.moeqs .moeqs-plan-cta { width: 100%; }
+.moeqs .moeqs-plan-cta[aria-disabled] { opacity: .5; cursor: default; }
+.moeqs-plan-note { text-align: center; color: var(--mq-ink-soft); font-weight: 600; margin: 4px 0 0; }
+@media (max-width: 760px) { .moeqs-plan.is-popular { transform: none; } }
+
+/* ---------- רקע כהה, מספרי שאלות למעלה, שמירה, סטטיסטיקה ---------- */
+.moeqs-page .moeqs-sec > .moeqs-h, .moeqs-h-light { color: #fff; }
+.moeqs-page .moeqs-note, .moeqs-page .moeqs-plan-note { color: rgba(255, 255, 255, .88); }
+.moeqs-page .moeqs-band-sm { background: none; padding: 8px 20px 20px; margin-bottom: 4px; }
+.moeqs-page .moeqs-band-sm::after { display: none; }
+.moeqs-panel { background: #fff; border-radius: 16px; padding: 20px 22px; margin: 0 0 20px; box-shadow: var(--mq-shadow); color: var(--mq-ink); }
+.moeqs-panel .moeqs-h { color: var(--mq-dark); margin-top: 0; }
+.moeqs-panel-sub { color: var(--mq-ink-soft); margin: -8px 0 14px; }
+.moeqs-journal .moeqs-actions { margin: 0 0 20px; }
+.moeqs-stats div:nth-child(5) { background: #6d28d9; }
+.moeqs-stats div:nth-child(6) { background: #0f766e; }
+
+.moeqs-trend { position: relative; display: flex; align-items: flex-end; gap: 6px; height: 210px; padding: 0 6px 24px; box-sizing: border-box; border-bottom: 2px solid var(--mq-line); }
+.moeqs-trend-col { position: relative; flex: 1; max-width: 46px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.moeqs-trend-bar { display: block; width: 100%; border-radius: 6px 6px 0 0; }
+.moeqs-trend-bar.is-pass { background: var(--mq-ok); }
+.moeqs-trend-bar.is-fail { background: var(--mq-bad); }
+.moeqs-trend-col b { position: absolute; bottom: -22px; font-size: .75em; color: var(--mq-ink-soft); font-variant-numeric: tabular-nums; }
+.moeqs-trend-line { position: absolute; left: 0; right: 0; bottom: calc(24px + (100% - 24px) * var(--pass)); border-top: 2px dashed var(--mq-ok); z-index: 1; pointer-events: none; }
+.moeqs-trend-line em { position: absolute; top: -1.7em; right: 0; font-size: .75em; font-style: normal; font-weight: 800; color: var(--mq-ok); background: #fff; padding: 0 4px; }
+
+.moeqs-topicstat { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.moeqs-topicstat li { display: grid; grid-template-columns: minmax(140px, 1.3fr) 3fr 52px minmax(96px, 1fr); align-items: center; gap: 12px; }
+.moeqs-ts-name { font-weight: 800; text-decoration: none; color: var(--mq-ink); }
+.moeqs-ts-name:hover { color: var(--mq-primary); }
+.moeqs-meter { display: block; height: 12px; border-radius: 6px; overflow: hidden; background: color-mix(in srgb, var(--mq-dark) 9%, #fff); }
+.moeqs-meter > span { display: block; height: 100%; border-radius: 6px; }
+.moeqs-meter .is-good { background: var(--mq-ok); }
+.moeqs-meter .is-mid { background: var(--mq-accent); }
+.moeqs-meter .is-bad { background: var(--mq-bad); }
+.moeqs-ts-pct { text-align: center; font-variant-numeric: tabular-nums; }
+.moeqs-topicstat small { color: var(--mq-ink-soft); }
+.moeqs-hardlist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+.moeqs-hardlist li { background: var(--mq-bad-bg); border-radius: 10px; padding: 8px 12px; }
+.moeqs-hardlist span { color: var(--mq-ink-soft); font-size: .92em; }
+@media (max-width: 640px) {
+	.moeqs-topicstat li { grid-template-columns: 1fr 52px; }
+	.moeqs-topicstat .moeqs-meter { grid-column: 1 / -1; order: 3; }
+	.moeqs-topicstat small { grid-column: 1 / -1; order: 4; }
+}
+
+/* מספרי השאלות בראש הסימולציה */
+.moeqs-mapwrap { margin: 0 0 16px; }
+.moeqs-map-cap { margin: 0 0 6px; font-size: .82em; color: var(--mq-ink-soft); font-weight: 700; }
+.moeqs-map { padding: 10px; gap: 5px; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); max-height: 170px; overflow-y: auto; }
+.moeqs .moeqs-cell { min-width: 40px; height: 32px; font-size: .78em; }
+.moeqs .moeqs-cell.is-saved::before { content: ""; position: absolute; bottom: 3px; left: 50%; width: 14px; height: 3px; margin-left: -7px; border-radius: 2px; background: var(--mq-info); }
+.moeqs .moeqs-cell.is-answered.is-saved::before, .moeqs .moeqs-cell.is-correct.is-saved::before, .moeqs .moeqs-cell.is-wrong.is-saved::before { background: #fff; }
+.moeqs .moeqs-savebtn.is-on { border-color: var(--mq-info); color: var(--mq-info); background: color-mix(in srgb, var(--mq-info) 10%, #fff); }
+.moeqs-finish { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 24px; }
+.moeqs-resume { background: var(--mq-cream); border: 1px solid var(--mq-line); border-right: 6px solid var(--mq-accent); border-radius: 12px; padding: 14px 18px; margin: 0 0 18px; }
+.moeqs-resume p { margin: 0 0 6px; }
+.moeqs-resume-title { font-weight: 900; font-size: 1.05em; color: var(--mq-dark); }
+
+/* ריווח עליון בעמודים על הרקע הכהה וצבע לכרטיס הרביעי */
+.moeqs-stats div:nth-child(4) { background: #a16207; }
+.moeqs-journal, .moeqs-plans { padding-top: 28px; }
+.moeqs-hub { padding-top: 18px; }
+.moeqs-page .moeqs-quiz { margin-top: 28px; }
+
+/* ---------- חשבון, טפסים, חלון אישור ---------- */
+.moeqs .screen-reader-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.moeqs-acct-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 22px; align-items: start; }
+.moeqs-form .moeqs-h { margin-top: 0; }
+.moeqs-fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; }
+@media (max-width: 520px) { .moeqs-fgrid { grid-template-columns: 1fr; } }
+.moeqs-frow { display: flex; flex-direction: column; gap: 5px; margin: 0 0 14px; }
+.moeqs-frow label { font-weight: 700; }
+.moeqs-form input[type="text"], .moeqs-form input[type="email"], .moeqs-form input[type="tel"], .moeqs-form input[type="password"], .moeqs-form input[type="url"] { width: 100%; padding: 11px 13px; font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; min-height: 46px; }
+.moeqs-form input:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 1px; border-color: var(--mq-info); }
+.moeqs-hint { color: #4a5568; }
+.moeqs-req { color: var(--mq-bad); font-weight: 900; }
+.moeqs-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.moeqs-errors { background: var(--mq-bad-bg); color: #7a1410; border: 2px solid var(--mq-bad); border-radius: 12px; padding: 12px 16px; margin: 0 0 18px; }
+.moeqs-errors ul { margin: 6px 0 0; padding-right: 20px; }
+.moeqs-details { margin: 6px 0 16px; }
+.moeqs-details summary { cursor: pointer; font-weight: 800; padding: 6px 0; }
+.moeqs .moeqs-danger { border-color: var(--mq-bad); color: #9b1c12; background: #fff; }
+.moeqs .moeqs-danger:hover:not(:disabled) { background: var(--mq-bad); color: #fff; }
+.moeqs-reset { margin: 4px 0 28px; }
+.moeqs-dialog { border: 0; border-radius: 18px; padding: 26px; max-width: 480px; width: calc(100vw - 32px); box-shadow: 0 24px 60px rgba(0, 0, 0, .55); direction: rtl; text-align: right; color: var(--mq-ink); font-family: inherit; }
+.moeqs-dialog::backdrop { background: rgba(10, 14, 40, .72); }
+.moeqs-dialog h3 { margin: 0 0 10px; font-size: 1.25em; color: var(--mq-dark); }
+.moeqs-rd-msg { font-weight: 800; color: var(--mq-ok); min-height: 1.4em; margin: 6px 0 0; }
+.moeqs-adminbg { background: linear-gradient(180deg, #151c36, #3a2630); padding: 24px; border-radius: 14px; }
+.moeqs-adminbg .moeqs-h-light { color: #fff; }
+.moeqs-footer-links { text-align: center; margin: 0; padding: 12px; font-size: .9em; background: #0b1030; color: #fff; }
+.moeqs-footer-links a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.moeqs-a11y-statement { max-width: 860px; margin: 0 auto; padding: 8px 16px 40px; line-height: 1.8; }
+.moeqs-a11y-statement h3 { margin-top: 28px; }
+.moeqs-form textarea { width: 100%; padding: 11px 13px; font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; }
+.moeqs-form textarea:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 1px; border-color: var(--mq-info); }
+
+/* נגישות: ניגודיות */
+.moeqs-ok-text, .moeqs-feedback.is-correct { color: #166534; }
+
+/* אותו פונט כמו בסרגל העליון בעמודי החשבון */
+.moeqs-account, .moeqs-account * { font-family: var(--moeqs-nav-font, inherit); }
+.moeqs-register-cta { margin: 0 0 16px; }
+.moeqs-register-cta a { font-weight: 800; color: var(--mq-primary); }
+#moeqs-register { scroll-margin-top: 120px; }
+.moeqs-manage h2 small { font-size: .5em; opacity: .85; font-weight: 600; }
+.moeqs-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 24px; margin: 0; }
+.moeqs-dl dt { font-weight: 800; color: var(--mq-ink-soft); font-size: .85em; }
+.moeqs-dl dd { margin: 0; overflow-wrap: anywhere; }
+.moeqs-inline-form { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 10px 14px; }
+.moeqs-inline-form select, .moeqs-searchbar input[type="search"], .moeqs-inline-form input[type="number"] { padding: 9px 11px; font: inherit; border: 2px solid #8a93a6; border-radius: 10px; background: #fff; color: var(--mq-ink); min-height: 44px; }
+.moeqs-searchbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 18px; }
+.moeqs-searchbar input[type="search"] { flex: 1 1 260px; }
+.moeqs-pager .page-numbers { display: inline-block; padding: 6px 12px; margin: 2px; border: 1.5px solid var(--mq-line); border-radius: 8px; text-decoration: none; color: var(--mq-ink); }
+.moeqs-pager .current { background: var(--mq-dark); color: #fff; }
+.moeqs-manage .moeqs-table th, .moeqs-manage .moeqs-table td { white-space: normal; }
+
+.moeqs-stats span { opacity: 1 !important; }
+
+/* ---------- עזרים: נוסחאות ומחשבונים ---------- */
+.moeqs-aids { padding-top: 28px; }
+.moeqs-aid-intro { color: rgba(255, 255, 255, .9); font-size: 1.05em; margin: -6px 0 18px; }
+.moeqs-aid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 0 0 24px; }
+.moeqs-aid-card { display: flex; flex-direction: column; gap: 8px; background: #fff; color: var(--mq-ink); border-radius: 16px; padding: 22px 20px 20px; border-top: 6px solid var(--tc, var(--mq-primary)); box-shadow: var(--mq-shadow); text-decoration: none; }
+.moeqs-aid-card h3 { margin: 0; font-size: 1.15em; font-weight: 900; color: color-mix(in srgb, var(--tc, #2563eb) 70%, #000); }
+.moeqs-aid-card p { margin: 0; color: var(--mq-ink-soft); flex: 1; }
+.moeqs-aid-card .moeqs-btn { align-self: flex-start; }
+.moeqs-aid-soon { color: var(--mq-ink-soft); font-weight: 700; }
+a.moeqs-calc-card:hover, a.moeqs-calc-card:focus-visible { transform: translateY(-3px); box-shadow: 0 16px 34px -14px rgba(0, 0, 0, .6); }
+.moeqs-calc-ico { color: var(--tc); display: block; }
+.moeqs-formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+.moeqs-formula { margin: 0; }
+.moeqs-formula math, .moeqs-calc-formula math { font-size: 1.5em; font-family: "Latin Modern Math", "Cambria Math", "STIX Two Math", "Times New Roman", serif; margin: 10px 0; }
+.moeqs-note-sm { color: var(--mq-ink-soft); font-size: .92em; margin: 8px 0 0; }
+.moeqs-list { margin: 8px 0 0; padding-right: 20px; }
+.moeqs-calc { margin-top: 6px; }
+.moeqs-calc-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+.moeqs-calc-form { display: grid; gap: 16px; }
+.moeqs-calc-row[hidden] { display: none; }
+.moeqs-calc-row { display: flex; flex-direction: column; gap: 6px; }
+.moeqs-calc-lab { font-weight: 800; }
+.moeqs-calc-inwrap { display: flex; align-items: stretch; }
+.moeqs-calc-inwrap input, .moeqs-calc-row select { font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; min-height: 46px; padding: 8px 12px; width: 100%; }
+.moeqs-calc-inwrap input { border-radius: 0 10px 10px 0; direction: ltr; text-align: right; }
+.moeqs-calc-row select { border-radius: 10px; }
+.moeqs-calc-unit { display: inline-flex; align-items: center; padding: 0 12px; background: #eef1f7; border: 2px solid #8a93a6; border-right: 0; border-radius: 10px 0 0 10px; font-weight: 700; color: #2d3748; white-space: nowrap; }
+.moeqs-calc-unit:empty { display: none; }
+.moeqs-calc-inwrap input:focus-visible, .moeqs-calc-row select:focus-visible, .moeqs-calc-radio input:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 1px; }
+.moeqs-calc-radios { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.moeqs-calc-radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.moeqs-calc-radio input { width: 20px; height: 20px; accent-color: var(--mq-primary); }
+.moeqs-calc-side { background: var(--mq-cream); border: 1px solid var(--mq-line); border-radius: 14px; padding: 18px 20px; position: sticky; top: 130px; }
+.moeqs-calc-restitle { margin: 0 0 8px; font-size: 1em; color: var(--mq-ink-soft); }
+.moeqs-calc-out { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 10px 0; border-top: 1px solid var(--mq-line); }
+.moeqs-calc-out:first-of-type { border-top: 0; }
+.moeqs-calc-olab { flex: 1 0 100%; color: var(--mq-ink-soft); font-weight: 700; }
+.moeqs-calc-out strong { font-size: 1.6em; font-weight: 900; color: var(--mq-dark); font-variant-numeric: tabular-nums; direction: ltr; }
+.moeqs-calc-out.is-big strong { font-size: 2.1em; color: var(--mq-primary); }
+.moeqs-calc-ounit { font-weight: 800; color: var(--mq-ink-soft); }
+.moeqs-calc-note { margin: 8px 0 0; padding: 10px 12px; border-radius: 10px; background: #eef1f7; font-weight: 700; }
+.moeqs-calc-note.ok { background: var(--mq-ok-bg); color: #14532d; }
+.moeqs-calc-note.warn { background: var(--mq-bad-bg); color: #7a1410; }
+.moeqs-calc-hint { color: var(--mq-ink-soft); margin: 0; }
+.moeqs-calc-formula { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--mq-line); }
+.moeqs-calc-formula h3 { margin: 0 0 4px; font-size: 1em; color: var(--mq-ink-soft); }
+@media (max-width: 800px) { .moeqs-calc-grid { grid-template-columns: 1fr; } .moeqs-calc-side { position: static; } .moeqs-formula-grid { grid-template-columns: 1fr; } }
+@media print {
+	html, body, body.moeqs-page, body.moeqs-page main { background: #fff !important; }
+	header, footer, .moeqs-a11y-ui, .moeqs-footer-links, .moeqs-skip, .moeqs-aids .moeqs-btn, #wpadminbar { display: none !important; }
+	.moeqs-aids .moeqs-h-light, .moeqs-aid-intro { color: #000 !important; }
+	.moeqs-formula-grid { display: block; } .moeqs-formula { break-inside: avoid; box-shadow: none; border: 1px solid #999; margin-bottom: 12px; }
+}
+
+/* תגובה בזמן איפוס והודעות קופצות */
+.moeqs-rd-msg { display: flex; align-items: center; gap: 8px; }
+.moeqs-rd-msg.is-busy { color: var(--mq-ink); font-weight: 700; }
+.moeqs-rd-msg.is-done { color: #166534; font-weight: 800; }
+.moeqs-rd-msg.is-fail { color: #9b1c12; font-weight: 800; }
+.moeqs-spin { width: 18px; height: 18px; border: 3px solid #cbd2e1; border-top-color: var(--mq-primary); border-radius: 50%; display: inline-block; animation: moeqs-rot .8s linear infinite; }
+@keyframes moeqs-rot { to { transform: rotate(360deg); } }
+.moeqs-dialog button:disabled { opacity: .6; cursor: wait; }
+.moeqs-toast { position: fixed; right: 50%; transform: translateX(50%) translateY(30px); bottom: 24px; z-index: 100000; background: #14532d; color: #fff; padding: 14px 22px; border-radius: 12px; font-weight: 800; box-shadow: 0 14px 34px rgba(0, 0, 0, .5); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100vw - 32px); }
+.moeqs-toast.is-show { opacity: 1; transform: translateX(50%) translateY(0); }
+.moeqs-feedback { scroll-margin-top: 130px; }
+.moeqs-explain.is-none .moeqs-explain-body { color: var(--mq-ink-soft); }
+@media (prefers-reduced-motion: reduce) { .moeqs-spin { animation-duration: 2.5s; } .moeqs-toast { transition: none; } }
+
+/* ---------- תצוגה קומפקטית: כל השאלה במסך אחד ---------- */
+.moeqs.moeqs-quiz { max-width: 1200px; padding: clamp(12px, 2vw, 22px); font-size: 15.5px; overflow: clip; overflow: clip; }
+.moeqs.moeqs-quiz.fs-0 { font-size: 14px; }
+.moeqs.moeqs-quiz.fs-2 { font-size: 18px; }
+.moeqs.moeqs-quiz.fs-3 { font-size: 20px; }
+.moeqs-quiz .moeqs-title { font-size: 1.45em; }
+.moeqs-quiz .moeqs-head { margin-bottom: 6px; gap: 8px 12px; }
+.moeqs-quiz .moeqs-bar { height: 6px; margin-bottom: 8px; }
+.moeqs-quiz .moeqs-mapwrap { margin: 0 0 8px; }
+.moeqs-quiz .moeqs-map-cap { font-size: .75em; margin: 0 0 3px; }
+.moeqs-quiz .moeqs-map { padding: 6px 8px; gap: 4px; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); max-height: 72px; }
+.moeqs.moeqs-quiz .moeqs-cell { min-width: 32px; height: 26px; font-size: .78em; border-radius: 7px; padding: 0 4px; }
+.moeqs-quiz .moeqs-q { font-size: 1.08em; line-height: 1.55; margin-bottom: 10px; }
+.moeqs-quiz .moeqs-img { max-width: 100%; height: auto; object-fit: contain; }
+.moeqs-img.is-zoom { cursor: zoom-in; }
+.moeqs-img.is-zoom:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 2px; }
+.moeqs-quiz .moeqs-answers { gap: 6px; }
+.moeqs.moeqs-quiz .moeqs-ans { padding: 8px 12px; gap: 12px; }
+.moeqs-quiz .moeqs-bubble { width: 28px; height: 28px; border-radius: 8px; }
+.moeqs-quiz .moeqs-feedback { margin: 8px 0 0; padding: 7px 12px; }
+.moeqs-quiz .moeqs-explain { margin-top: 8px; }
+.moeqs-quiz .moeqs-nav { position: sticky; bottom: 0; z-index: 6; background: var(--mq-paper); margin: 10px 0 0; padding: 10px 0; border-top: 1px solid var(--mq-line); }
+.moeqs-quiz .moeqs-finish { margin: 8px 0 0; }
+.moeqs-fsctl { display: inline-flex; gap: 4px; }
+.moeqs-fsbtn { min-width: 38px; height: 32px; border: 1.5px solid var(--mq-line); border-radius: 8px; background: #fff; color: var(--mq-ink); font: inherit; font-weight: 800; cursor: pointer; padding: 0 8px; }
+.moeqs-fsbtn:hover { border-color: var(--mq-info); }
+
+
+
+body:has(.moeqs-quiz) header.wp-block-template-part > .wp-block-group { padding-top: .45rem !important; padding-bottom: .45rem !important; }
+body:has(.moeqs-quiz) header .moeqs-logo img { height: 38px !important; }
+.moeqs-page .moeqs-quiz { margin-top: 14px; }
+
+/* תשובות קצרות: שתי עמודות במסכים רחבים */
+@media (min-width: 1000px) { .moeqs-quiz .moeqs-answers.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; } }
+
+/* שדה הדבורה (honeypot) מוסתר בלי ליצור גלילה אופקית */
+.moeqs-hp { position: absolute !important; left: 0 !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0 0 0 0); opacity: 0; }
+/* ניגודיות: תגית "התשובה הנכונה" בסיכום */
+.moeqs-rev-ans li.is-correct .moeqs-tag { color: #166534; }
+.moeqs-rev-ans li.is-wrong .moeqs-tag { color: #7a1410; }
+
+/* ---------- צפיפות אוטומטית לפי אורך השאלה ---------- */
+.moeqs.moeqs-quiz[data-density] { font-size: var(--qfs, 15.5px); }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-q { line-height: 1.7; margin-bottom: 20px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-answers { gap: 12px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-ans { padding: 15px 18px; gap: 16px; border-radius: 14px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-bubble { width: 38px; height: 38px; border-radius: 10px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-cell { height: 32px; min-width: 40px; font-size: .82em; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-head { margin-bottom: 12px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-bar { margin-bottom: 14px; height: 8px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-mapwrap { margin-bottom: 18px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-map { max-height: 84px; }
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-nav { padding: 14px 0; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-q { line-height: 1.6; margin-bottom: 14px; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-answers { gap: 9px; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-ans { padding: 11px 15px; gap: 14px; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-bubble { width: 33px; height: 33px; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-mapwrap { margin-bottom: 12px; }
+.moeqs.moeqs-quiz[data-density="normal"] .moeqs-head { margin-bottom: 8px; }
+
+/* ---------- קודי מתנה וגישה חופשית ---------- */
+.moeqs-codebox { margin-top: 22px; }
+.moeqs-codebox .moeqs-form { max-width: 420px; }
+.moeqs-freepanel form { margin: 0; }
+.moeqs-freepanel label { display: inline-block; margin: 2px 0; }
+
+/* ---------- תקנון ופרטיות ---------- */
+.moeqs-legal { max-width: 860px; margin: 24px auto; padding: 26px 34px 32px; background: var(--mq-cream, #fff); color: #1b2340; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+.moeqs-legal a { color: #b4491f; }
+@media (max-width: 600px) { .moeqs-legal { padding: 18px 16px 24px; margin: 12px 8px; } }
+.moeqs-legal-title { font-size: 1.7em; margin: 12px 0 4px; }
+.moeqs-legal-date { margin: 0 0 14px; opacity: .8; font-size: .92em; }
+.moeqs-legal-intro p, .moeqs-legal-sec p, .moeqs-legal-sec li { line-height: 1.75; }
+.moeqs-legal-sec h2 { font-size: 1.15em; margin: 26px 0 8px; }
+.moeqs-legal-sec ul { padding-inline-start: 22px; }
+.moeqs-legal a { text-decoration: underline; }
+
+/* ---------- ועדת הפירושים ---------- */
+.moeqs-cm-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 4px 0 14px; }
+.moeqs-cm-tools input[type=search] { flex: 1 1 320px; min-height: 46px; padding: 8px 16px; border-radius: 12px; border: 1px solid #98a2b3; font: inherit; background: #fff; color: #1b2340; }
+.moeqs-cm-links { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.moeqs-cm-status { min-height: 1.4em; margin: 0 0 8px; color: #fff; font-weight: 700; }
+.moeqs-cm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; align-items: start; }
+.moeqs-cm-topic { background: #fff; color: #1b2340; border-radius: 16px; border-top: 6px solid var(--tc, #2563eb); box-shadow: var(--mq-shadow, 0 8px 24px rgba(0,0,0,.2)); overflow: hidden; }
+.moeqs-cm-topic[hidden] { display: none; }
+.moeqs-cm-topic summary { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; cursor: pointer; list-style: none; }
+.moeqs-cm-topic summary::-webkit-details-marker { display: none; }
+.moeqs-cm-topic summary:focus-visible { outline: 3px solid var(--tc, #2563eb); outline-offset: -3px; }
+.moeqs-cm-name { font-weight: 900; font-size: 1.12em; color: color-mix(in srgb, var(--tc, #2563eb) 70%, #000); }
+.moeqs-cm-count { color: #4b5563; font-size: .92em; }
+.moeqs-cm-topic[open] summary { border-bottom: 1px solid #e5e7eb; }
+.moeqs-cm-list { list-style: none; margin: 0; padding: 4px 14px 12px; max-height: 480px; overflow-y: auto; }
+.moeqs-cm-list li { display: grid; grid-template-columns: 88px 1fr; gap: 2px 10px; padding: 10px 2px; border-bottom: 1px solid #eef0f3; line-height: 1.45; }
+.moeqs-cm-list li[hidden] { display: none; }
+.moeqs-cm-num { white-space: nowrap; font-weight: 800; color: color-mix(in srgb, var(--tc, #2563eb) 75%, #000); font-variant-numeric: tabular-nums; }
+.moeqs-cm-title small { color: #6b7280; }
+.moeqs-cm-go { grid-column: 2; font-size: .88em; color: #b4491f; text-decoration: underline; justify-self: start; }
+.moeqs-cm-note { margin-top: 22px; color: #e5e7eb; font-size: .9em; max-width: 760px; }
+
+/* ---------- ספריית חומרי קריאה ---------- */
+.moeqs-lib-search { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 18px; }
+.moeqs-lib-search input[type=search], .moeqs-lib-tools input[type=search] { flex: 1 1 320px; min-height: 46px; padding: 8px 16px; border-radius: 12px; border: 1px solid #98a2b3; font: inherit; background: #fff; color: #1b2340; }
+.moeqs-lib-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 6px 0 14px; }
+.moeqs-lib-count { color: #fff; font-weight: 700; }
+.moeqs-lib-sub { margin: 22px 0 8px; color: #fff; font-size: 1.05em; }
+.moeqs-lib-list { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.moeqs-lib-list[hidden], .moeqs-lib-sub[hidden], .moeqs-lib-item[hidden] { display: none; }
+.moeqs-lib-item { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 14px; background: #fff; color: #1b2340; border-radius: 14px; padding: 12px 16px; box-shadow: var(--mq-shadow, 0 6px 18px rgba(0,0,0,.18)); }
+.moeqs-lib-ico { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 12px; background: #eef2ff; color: #3730a3; font-weight: 900; font-size: .8em; letter-spacing: .5px; }
+.moeqs-lib-title { font-weight: 800; line-height: 1.4; }
+.moeqs-lib-title small { display: block; margin-top: 3px; font-weight: 500; color: #4b5563; }
+.moeqs-lib-acts { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+.moeqs-lib-acts .moeqs-btn { min-height: 38px; padding: 6px 16px; }
+@media (max-width: 640px) { .moeqs-lib-item { grid-template-columns: 44px 1fr; } .moeqs-lib-ico { width: 44px; height: 44px; } .moeqs-lib-acts { grid-column: 1 / -1; } }
+.moeqs-cm-lib { grid-column: 2; font-size: .88em; color: #3730a3; font-weight: 700; text-decoration: underline; justify-self: start; }
+
+/* ---------- הצגת סיסמה ---------- */
+.moeqs-pw { position: relative; display: block; }
+.moeqs-pw input { width: 100%; padding-left: 74px; box-sizing: border-box; }
+.moeqs-pw-toggle { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); min-height: 34px; padding: 4px 12px; border: 1px solid #98a2b3; border-radius: 8px; background: #f3f4f6; color: #1b2340; font: inherit; font-size: .85em; font-weight: 700; cursor: pointer; }
+.moeqs-pw-toggle:hover { background: #e5e7eb; }
+.moeqs-pw-toggle:focus-visible { outline: 3px solid #2563eb; outline-offset: 1px; }
+.moeqs-plan-test { display:block; font-size:.45em; font-weight:700; color:#b45309; }
+
+/* ---------- ניצול רוחב המסך, וטקסט השאלה זהה לטקסט התשובות ---------- */
+.moeqs.moeqs-quiz { max-width: min(1680px, 96vw); }
+.moeqs.moeqs-quiz .moeqs-q,
+.moeqs.moeqs-quiz[data-density] .moeqs-q { font-size: 1em; line-height: 1.5; }
+.moeqs.moeqs-quiz .moeqs-q .moeqs-text { font-weight: 500; }
+.moeqs.moeqs-quiz .moeqs-q .moeqs-text.is-bold { font-weight: 800; }
+
+/* ---------- כרטיסי המנויים: גובה זהה ויישור מלא ---------- */
+.moeqs-plans .moeqs-plan-grid { align-items: stretch !important; }
+.moeqs-plans .moeqs-plan { align-self: stretch !important; height: auto; min-height: 100%; }
+.moeqs-plans .moeqs-plan.is-popular { transform: none; }
+.moeqs-plans .moeqs-plan-body > .moeqs-plan-cta { margin-top: auto; }
+
+/* ---------- סוג רישיון: שדה בחירה בטפסים ---------- */
+.moeqs-form select { width: 100%; padding: 11px 13px; font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; min-height: 46px; }
+.moeqs-form select:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 1px; border-color: var(--mq-info); }
+
+/* ---------- תגית בצד השאלה: מי מיועד לה ---------- */
+.moeqs-count { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.moeqs-lvl { display: inline-block; font-size: .78em; font-weight: 800; line-height: 1.2; padding: 4px 10px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
+.moeqs-lvl-a { color: #7a1fa2; background: #f6ebfc; }
+.moeqs-lvl-b { color: #9a4b00; background: #fff1e0; }
+
+/* ---------- הקובייה הרביעית (מהנדסים בלבד) וקוביות באותו גובה ---------- */
+.moeqs-lic-engonly { --lc: #7e22ce; }
+.moeqs-cards { align-items: stretch; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.moeqs-cards > .moeqs-card { height: 100%; }
+.moeqs-aid-grid { align-items: stretch; }
+.moeqs-aid-card { height: 100%; }
+.moeqs-aid-card > .moeqs-btn:last-child { margin-top: auto; }
+.moeqs-tiles { align-items: stretch; }
+.moeqs-tile { height: 100%; }
+
+/* ---------- שאלות נפוצות (אקורדיון) ---------- */
+.moeqs-faq { max-width: 900px; margin: 48px auto 24px; padding: 0 12px; }
+.moeqs-faq-title { text-align: center; color: #fff; font-size: 1.8em; font-weight: 900; margin: 0 0 6px; }
+.moeqs-faq-sub { text-align: center; color: rgba(255,255,255,.85); margin: 0 0 22px; }
+.moeqs-faq-sub a { color: var(--mq-accent); }
+.moeqs-faq-item { background: #fff; color: #1b2340; border: 1px solid #e7e2d8; border-radius: 14px; margin: 0 0 12px; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+.moeqs-faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; font-weight: 800; font-size: 1.05em; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.moeqs-faq-item summary::-webkit-details-marker { display: none; }
+.moeqs-faq-item summary::after { content: ""; flex: none; width: 10px; height: 10px; border-left: 2.5px solid var(--mq-primary); border-bottom: 2.5px solid var(--mq-primary); transform: rotate(-45deg); transition: transform .2s; margin-top: -4px; }
+.moeqs-faq-item[open] summary::after { transform: rotate(135deg); margin-top: 4px; }
+.moeqs-faq-item summary:focus-visible { outline: 3px solid var(--mq-info, #2563eb); outline-offset: 2px; border-radius: 14px; }
+.moeqs-faq-a { padding: 0 20px 16px; line-height: 1.7; }
+.moeqs-faq-a p { margin: 0; }
+.moeqs-faq-a a { color: #b4491f; text-decoration: underline; }
+
+/* ---------- מדריך הכנה בעמוד הבית ---------- */
+.moeqs-guide { max-width: 1000px; margin: 48px auto 0; padding: 0 12px; }
+.moeqs-guide-title { text-align: center; color: #fff; font-size: 1.8em; font-weight: 900; margin: 0 0 6px; }
+.moeqs-guide-sub { text-align: center; color: rgba(255,255,255,.85); margin: 0 0 22px; }
+.moeqs-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: stretch; }
+.moeqs-guide-card { background: #fff; color: #1b2340; border-radius: 16px; padding: 22px 22px 18px; box-shadow: 0 6px 18px rgba(0,0,0,.14); border-top: 6px solid var(--gc, var(--mq-primary)); height: 100%; box-sizing: border-box; }
+.moeqs-guide-card h3 { margin: 0 0 10px; font-size: 1.15em; font-weight: 900; }
+.moeqs-guide-card p, .moeqs-guide-card li { line-height: 1.7; }
+.moeqs-guide-card p { margin: 0 0 8px; }
+.moeqs-guide-card ul, .moeqs-guide-card ol { margin: 0 0 8px; padding-inline-start: 20px; }
+.moeqs-guide-card a { color: #b4491f; text-decoration: underline; font-weight: 700; }
+.moeqs-guide-wide { grid-column: 1 / -1; }
+
+/* ---------- תחתית האתר ---------- */
+.moeqs-sitefoot { background: #0f1630; color: rgba(255,255,255,.88); padding: 38px 20px 30px; margin-top: 40px; }
+.moeqs-sitefoot-in { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(240px, 1fr) minmax(260px, 1.2fr); gap: 28px; align-items: start; }
+.moeqs-sitefoot-brand p { margin: 12px 0 0; line-height: 1.7; font-size: .98em; max-width: 440px; }
+.moeqs-sitefoot nav h2 { color: #fff; font-size: 1.05em; font-weight: 800; margin: 0 0 10px; }
+.moeqs-sitefoot nav ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+.moeqs-sitefoot nav a { color: rgba(255,255,255,.9); text-decoration: none; display: inline-block; padding: 4px 0; }
+.moeqs-sitefoot nav a:hover, .moeqs-sitefoot nav a:focus { color: var(--mq-accent, #f4b400); text-decoration: underline; }
+@media (max-width: 760px) { .moeqs-sitefoot-in { grid-template-columns: 1fr; } }
+
+/* הכרטיס הפופולרי: מסגרת באותו עובי כמו האחרים (הדגשה בצל), כדי שהכפתורים יהיו מיושרים בדיוק */
+.moeqs-plans .moeqs-plan.is-popular { border-width: 1px; box-shadow: 0 0 0 2px var(--mq-primary), var(--mq-shadow); }
+
+/* שאלה עם שרטוט: הטקסט למעלה, השרטוט ממורכז מתחתיו, והתשובות בתיבות דקות, כדי שהכול ייכנס במסך אחד */
+.moeqs-quiz .moeqs-q .moeqs-img { margin-inline: auto; }
+.moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-ans { padding: 7px 12px; gap: 10px; }
+.moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-q { margin-bottom: 6px; }
+.moeqs.moeqs-quiz.has-qimg { padding-top: 10px; padding-bottom: 12px; }
+
+/* ---------- שרטוטים: גדולים וקריאים, במסגרת עדינה, לחיצה פותחת מסך מלא ---------- */
+.moeqs-figure { margin: 8px auto 10px; text-align: center; max-width: 100%; }
+.moeqs .moeqs-figure .moeqs-img { display: block; margin: 0 auto; width: auto; height: auto; max-width: 85%; max-height: 450px; object-fit: contain; background: #fff; border: 1px solid #e3e6ee; border-radius: 10px; padding: 6px; box-sizing: border-box; cursor: zoom-in; }
+.moeqs .moeqs-explain-body .moeqs-figure .moeqs-img { max-height: none; }
+.moeqs-zoomcap { margin: 4px 0 0; font-size: .8em; color: #5b6475; }
+@media (max-width: 600px) { .moeqs .moeqs-figure .moeqs-img { max-width: 100%; } }
+
+/* תצוגת מסך מלא */
+.moeqs-lightbox { position: fixed; inset: 0; width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh; margin: 0; padding: 0; border: 0; background: rgba(8, 11, 30, .94); color: #fff; overflow: hidden; }
+.moeqs-lightbox::backdrop { background: rgba(8, 11, 30, .9); }
+.moeqs-lb-bar { position: absolute; top: 10px; left: 10px; display: flex; gap: 8px; z-index: 3; direction: ltr; }
+.moeqs-lb-btn { min-width: 44px; height: 44px; padding: 0 12px; border-radius: 22px; border: 0; background: #fff; color: #111827; font: 700 20px/1 system-ui, sans-serif; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.moeqs-lb-btn.moeqs-lb-fit { font-size: 15px; }
+.moeqs-lb-btn.moeqs-lb-close { font-size: 26px; }
+.moeqs-lb-btn:focus-visible { outline: 3px solid #f4b400; outline-offset: 2px; }
+.moeqs-lb-stage { position: absolute; inset: 64px 12px 34px; display: flex; align-items: center; justify-content: center; overflow: hidden; touch-action: none; }
+.moeqs-lb-img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; background: #fff; border-radius: 6px; transform-origin: center center; cursor: zoom-in; user-select: none; -webkit-user-drag: none; }
+.moeqs-lb-stage.is-zoomed .moeqs-lb-img { cursor: grab; }
+.moeqs-lb-hint { position: absolute; bottom: 6px; left: 0; right: 0; margin: 0; text-align: center; font-size: 13px; color: rgba(255,255,255,.85); }
+
+/* ---------- Assistant כגופן הראשי של הסימולטור ---------- */
+.moeqs, .moeqs-sitefoot, .moeqs-lightbox { font-family: 'Assistant', 'Segoe UI', 'Arial Hebrew', Arial, sans-serif; font-variant-numeric: tabular-nums; line-height: 1.6; }
+.moeqs button, .moeqs input, .moeqs select, .moeqs textarea, .moeqs-lightbox button { font-family: inherit; font-variant-numeric: inherit; }
+.moeqs .moeqs-account, .moeqs .moeqs-account *:not(svg):not(svg *) { font-family: inherit; } /* כלל נפרד: אם דפדפן ישן לא מכיר את הבורר, שאר הכללים לא נפגעים */
+.moeqs.moeqs-quiz .moeqs-q, .moeqs.moeqs-quiz[data-density] .moeqs-q, .moeqs.moeqs-quiz .moeqs-ans, .moeqs.moeqs-quiz[data-density] .moeqs-ans, .moeqs.moeqs-quiz .moeqs-ans-text { line-height: 1.6; }
+
+/* ---------- מעבר לשאלה: מספרים בכפתורים עגולים ברוחב גמיש (גם 4 ספרות נכנסות במלואן) ---------- */
+.moeqs .moeqs-map, .moeqs-quiz .moeqs-map, .moeqs.moeqs-quiz[data-density] .moeqs-map { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
+.moeqs.moeqs-quiz[data-density] .moeqs-map { max-height: 118px; } /* שלוש שורות: כל 50 המספרים גלויים במסך רחב */
+.moeqs .moeqs-cell, .moeqs.moeqs-quiz .moeqs-cell, .moeqs.moeqs-quiz[data-density] .moeqs-cell { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; min-width: 32px; width: auto; padding: 0 10px; height: 30px; border-radius: 999px; line-height: 1; white-space: nowrap; overflow: visible; }
+
+/* ---------- שאלה עם שרטוט: בלי חיתוכים ---------- */
+/* 1. סרגל הכפתורים התחתון הוא חלק רגיל מהכרטיס (לא צף), כך שתשובות לעולם לא מוסתרות מאחוריו */
+.moeqs.moeqs-quiz .moeqs-nav { position: static; }
+/* 2. סרגל מספרי השאלות: שורה אחת שנגללת לצדדים, וכפתור "כל השאלות" פותח את כל הרשימה */
+.moeqs-exam .moeqs-map-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 4px; }
+.moeqs-exam .moeqs-map-top .moeqs-map-cap { margin: 0; }
+.moeqs-map-toggle { flex: none; border: 1px solid var(--mq-line); background: #fff; color: var(--mq-dark); border-radius: 999px; padding: 2px 12px; font: inherit; font-size: .78em; font-weight: 700; line-height: 1.6; cursor: pointer; }
+.moeqs-map-toggle:hover { background: var(--mq-cream); }
+.moeqs-map-toggle:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 2px; }
+.moeqs .moeqs-exam .moeqs-mapwrap:not(.is-open) .moeqs-map, .moeqs.moeqs-quiz[data-density] .moeqs-exam .moeqs-mapwrap:not(.is-open) .moeqs-map { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; max-height: none; padding: 9px 8px 7px; scrollbar-width: thin; }
+.moeqs.moeqs-quiz[data-density] .moeqs-exam .moeqs-mapwrap.is-open .moeqs-map { flex-wrap: wrap; max-height: 210px; overflow-y: auto; }
+
+/* מרווח בתחתית כרטיס השאלה, כך שסרגל הכפתורים לעולם לא נוגע בתשובות */
+.moeqs-quiz .moeqs-qcard { padding-bottom: 14px; }
+
+/* ---------- עיצוב קריאה רגוע: כרטיס ממורכז, שאלה ושרטוט, תשובות בטור אחד, כפתורים במרכז ---------- */
+.moeqs.moeqs-quiz { max-width: 1140px; margin-inline: auto; }
+/* טקסט השאלה: משקל רגיל, 17px, ריווח 1.55; כיווניות לפי השורה, כדי שאנגלית וסוגריים לא יתהפכו */
+.moeqs.moeqs-quiz .moeqs-q, .moeqs.moeqs-quiz[data-density] .moeqs-q { font-size: calc(var(--qfs, 16px) + 1px); line-height: 1.55; margin-bottom: 10px; }
+.moeqs.moeqs-quiz .moeqs-q .moeqs-text, .moeqs.moeqs-quiz .moeqs-q .moeqs-text.is-bold { font-weight: 400; unicode-bidi: plaintext; text-align: right; }
+/* שרטוט: ממורכז מתחת לשאלה, בלי מסגרת ובלי שורת הסבר; לחיצה עליו עדיין פותחת מסך מלא */
+.moeqs .moeqs-qfig { text-align: center; margin: 4px 0 14px; }
+.moeqs .moeqs-qfig .moeqs-figure { margin: 0 auto; }
+.moeqs .moeqs-qfig .moeqs-figure .moeqs-img, .moeqs .moeqs-q .moeqs-figure .moeqs-img { max-height: var(--qimgmax, 500px); width: auto; max-width: 90%; object-fit: contain; border: 0; padding: 0; background: transparent; border-radius: 0; }
+/* תשובות: טור אחד ברוחב מלא, דקות, 16px במשקל רגיל */
+.moeqs.moeqs-quiz .moeqs-answers, .moeqs.moeqs-quiz .moeqs-answers.two-col { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.moeqs.moeqs-quiz[data-density] .moeqs-ans, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-ans { padding: 10px 16px; gap: 12px; border-radius: 12px; }
+.moeqs.moeqs-quiz .moeqs-ans-text { font-size: var(--qfs, 16px); font-weight: 400; line-height: 1.55; padding-top: 0; }
+/* שורת מידע עליונה אחת ודקה; רשימת המספרים נפתחת רק מהכפתור "כל השאלות" */
+.moeqs.moeqs-quiz .moeqs-head, .moeqs.moeqs-quiz[data-density] .moeqs-head { flex-wrap: wrap; gap: 6px 12px; margin-bottom: 6px; }
+.moeqs.moeqs-quiz .moeqs-head .moeqs-count { margin-inline-end: auto; }
+.moeqs.moeqs-quiz .moeqs-bar { height: 4px; margin: 0 0 10px; }
+.moeqs.moeqs-quiz .moeqs-mapwrap:not(.is-open) { display: none; }
+.moeqs.moeqs-quiz .moeqs-mapwrap.is-open { margin: 0 0 12px; }
+.moeqs.moeqs-quiz[data-density] .moeqs-exam .moeqs-mapwrap.is-open .moeqs-map { flex-wrap: wrap; max-height: 210px; overflow-y: auto; }
+/* כפתורי ניווט: במרכז, מיד מתחת לתשובה האחרונה */
+.moeqs.moeqs-quiz .moeqs-nav, .moeqs.moeqs-quiz[data-density] .moeqs-nav { justify-content: center; border-top: 0; margin: 16px 0 0; padding: 0; background: transparent; }
+.moeqs.moeqs-quiz .moeqs-nav .moeqs-btn { flex: 0 0 auto; min-width: 110px; }
+.moeqs.moeqs-quiz .moeqs-nav .moeqs-primary { margin-inline-start: 0; }
+.moeqs.moeqs-quiz .moeqs-finish { text-align: center; }
+.moeqs-page .moeqs.moeqs-quiz { margin-top: 8px; }
+.moeqs.moeqs-quiz .moeqs-qcard { padding-bottom: 4px; }
+.moeqs.moeqs-quiz .moeqs-nav, .moeqs.moeqs-quiz[data-density] .moeqs-nav { margin-top: 12px; }
+.moeqs.moeqs-quiz .moeqs-ans { align-items: center; }
+
+/* ---------- שאלה עם שרטוט או טבלה: תמיד טור אחד (מגרסה 3.19.4 בוטלה פריסת שני הטורים) ---------- */
+
+/* ---------- בזמן מבחן: הדר קומפקטי (עד ~56px) ---------- */
+body.moeqs-in-quiz header.wp-block-template-part > .wp-block-group { padding-top: 6px !important; padding-bottom: 6px !important; min-height: 0 !important; }
+body.moeqs-in-quiz header.wp-block-template-part .wp-block-group { row-gap: 0 !important; }
+body.moeqs-in-quiz header .moeqs-logo svg, body.moeqs-in-quiz header .moeqs-logo img { height: 34px !important; width: auto !important; }
+body.moeqs-in-quiz header .wp-block-navigation { font-size: 16px; }
+body.moeqs-in-quiz header .wp-block-navigation .wp-block-navigation-item__content { padding-top: 4px; padding-bottom: 4px; }
+
+/* ---------- שם המשתמש המחובר בפינה השמאלית של ההדר ---------- */
+header.wp-block-template-part { position: relative; }
+.moeqs-userchip { position: static; z-index: 5; display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; flex-shrink: 0; font-family: 'Assistant', 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.2; color: rgba(255,255,255,.88); white-space: nowrap; } /* בתוך שורת ה-flex של ההדר, בלי מיקום מוחלט */
+.moeqs-userchip a { color: rgba(255,255,255,.92); text-decoration: none; }
+.moeqs-userchip a:hover, .moeqs-userchip a:focus-visible { color: var(--mq-accent, #f4b400); text-decoration: underline; }
+.moeqs-userchip a:focus-visible { outline: 2px solid var(--mq-accent, #f4b400); outline-offset: 2px; border-radius: 4px; }
+.moeqs-uc-name { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+.moeqs-uc-name svg { opacity: .85; flex: none; }
+.moeqs-uc-sep { opacity: .45; }
+@media (max-width: 1280px) { .moeqs-userchip .moeqs-uc-name span { display: none; } }
+@media (max-width: 781px) { .moeqs-userchip { display: flex; justify-content: flex-start; padding: 2px 16px 8px; font-size: 13px; } .moeqs-userchip .moeqs-uc-name span { display: inline; } }
+
+/* ---------- כרטיס המבחן: ממורכז, רוחב 1120px (94% במסכים צרים יותר), גובה לפי התוכן (בלי מתיחה ל-100vh), רווח מההדר ומהפוטר ---------- */
+body .moeqs.moeqs-quiz { max-width: 1120px; width: 94%; margin: 24px auto !important; border-radius: 14px; padding: 32px 48px; height: auto; min-height: 0; box-sizing: border-box; }
+body.moeqs-in-quiz .wp-site-blocks > * + * { margin-block-start: 0 !important; }
+body.moeqs-in-quiz main, body.moeqs-in-quiz main > .wp-block-group, body.moeqs-in-quiz .wp-block-post-content, body.moeqs-in-quiz .entry-content { margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+body.moeqs-in-quiz .moeqs.moeqs-quiz, .moeqs-page.moeqs-in-quiz .moeqs.moeqs-quiz { margin: 24px auto !important; min-height: 0; height: auto; border-radius: 14px; }
+@media (max-width: 760px) {
+	body .moeqs.moeqs-quiz, body.moeqs-in-quiz .moeqs.moeqs-quiz { width: 100%; padding: clamp(12px, 3.5vw, 22px); border-radius: 0; }
+}
+/* שורת טקסט/נוסחה שנשמרה כתמונה: בתוך הנוסח, ברוחב הטקסט, בלי מסגרת */
+.moeqs .moeqs-q .moeqs-imgline { display: block; width: auto; max-width: 100%; height: auto; margin: 2px 0 6px auto; cursor: zoom-in; }
+/* בלי המסגרת הכחולה סביב נוסח השאלה במעבר רגיל בין שאלות */
+.moeqs .moeqs-q:focus:not(:focus-visible) { outline: none; }
+/* נוסח השאלה מקבל פוקוס תוכנתי רק כדי לגלול/להקריא אותו; אינו נגיש בטאב (tabindex=-1), ולכן אין צורך בהדגשה כחולה סביבו */
+.moeqs .moeqs-q[tabindex="-1"]:focus-visible { outline: none; }
+
+/* =====================================================================
+   מצב כהה (Dark Mode) – מופעל ע"י html[data-moeqs-theme="dark"], נשמר ב-localStorage
+   שרטוטים ותמונות נוסחה נשארים על רקע לבן כדי שלא ייפגעו.
+   ===================================================================== */
+.moeqs-theme-btn { position: fixed; left: 16px; top: 110px; z-index: 9980; width: 46px; height: 46px; padding: 0; border-radius: 50%; border: 2px solid rgba(255,255,255,.85); background: #151c36; color: #f4b400; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.4); transition: transform .12s, background .12s; }
+.moeqs-theme-btn:hover { transform: scale(1.07); }
+.moeqs-theme-btn:focus-visible { outline: 3px solid #f4b400; outline-offset: 2px; }
+.moeqs-theme-btn svg { width: 24px; height: 24px; display: block; }
+.moeqs-theme-btn .ic-sun { display: none; }
+html[data-moeqs-theme="dark"] .moeqs-theme-btn { background: #f3f4f6; color: #b45309; border-color: #121212; }
+html[data-moeqs-theme="dark"] .moeqs-theme-btn .ic-sun { display: block; }
+html[data-moeqs-theme="dark"] .moeqs-theme-btn .ic-moon { display: none; }
+@media (max-width: 781px) { .moeqs-theme-btn { width: 40px; height: 40px; left: 10px; } }
+/* 3.21.21: במובייל הכפתור בתוך ההדר (קצה שורת המשתמש), בלי לצוף מעל המתג "בדיקה תוך כדי מענה" או הטיימר */
+.moeqs-theme-btn.is-docked { position: static; top: auto; left: auto; bottom: auto; width: 34px; height: 34px; flex: 0 0 auto; margin-inline-start: auto; border-width: 1.5px; box-shadow: none; z-index: auto; }
+.moeqs-theme-btn.is-docked svg { width: 19px; height: 19px; }
+.moeqs-userchip:has(> .moeqs-theme-btn.is-docked) { align-items: center; }
+.moeqs-theme-btn.is-docked.is-inquiz { margin-inline-start: 0; }
+@media print { .moeqs-theme-btn { display: none; } }
+
+html[data-moeqs-theme="dark"] { color-scheme: dark; }
+html[data-moeqs-theme="dark"] .moeqs {
+	/* פלטת שחור-פחם ניטרלית (ללא גוון כחול) */
+	--mq-dark: #0d0d0d; --mq-paper: #1e1e1e; --mq-cream: #181818; --mq-line: #333333; --mq-ink: #f3f4f6; --mq-ink-soft: #b4b4b4;
+	--mq-ok-bg: #123421; --mq-bad-bg: #431d24; --mq-shadow: 0 10px 30px -12px rgba(0,0,0,.75);
+	--dm-surface: #2a2a2a; --dm-border: #3d3d3d; --dm-hover: #333333; --dm-field-border: #767676;
+	--dm-info: #8fb4ff; --dm-ok: #5ee08a; --dm-bad: #ff9a9a;
+}
+/* רקע הדף הכללי, ההדר והתפריט הנפתח: שחור עמוק במקום כחול-נייבי */
+html[data-moeqs-theme="dark"]:has(body.moeqs-page), html[data-moeqs-theme="dark"] body.moeqs-page {
+	background: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0/48px 48px, linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0/48px 48px, #121212 fixed !important;
+	background-color: #121212 !important;
+}
+html[data-moeqs-theme="dark"] body.moeqs-page header.wp-block-template-part, html[data-moeqs-theme="dark"] body.moeqs-page .site-header, html[data-moeqs-theme="dark"] body.moeqs-page #masthead { background: rgba(24,24,24,.96) !important; }
+html[data-moeqs-theme="dark"] body.moeqs-page header.wp-block-template-part .wp-block-navigation .wp-block-navigation__submenu-container,
+html[data-moeqs-theme="dark"] body.moeqs-page header.wp-block-template-part .wp-block-navigation .wp-block-navigation__submenu-container.has-background { background: #1e1e1e !important; background-color: #1e1e1e !important; border-color: #333333 !important; }
+html[data-moeqs-theme="dark"] .moeqs-band { background: radial-gradient(circle at 88% 85%, color-mix(in srgb, var(--mq-primary) 30%, transparent) 0, transparent 38%), #1a1a1a; }
+html[data-moeqs-theme="dark"] .moeqs-dialog::backdrop, html[data-moeqs-theme="dark"] .moeqs-report-dlg::backdrop { background: rgba(0, 0, 0, .78); }
+/* כותרות וטקסטים שהיו בצבע הכהה */
+html[data-moeqs-theme="dark"] .moeqs-title, html[data-moeqs-theme="dark"] .moeqs-qnum, html[data-moeqs-theme="dark"] .moeqs-text.is-bold,
+html[data-moeqs-theme="dark"] .moeqs-explain-title, html[data-moeqs-theme="dark"] .moeqs-rev-title, html[data-moeqs-theme="dark"] .moeqs-sources-line strong,
+html[data-moeqs-theme="dark"] .moeqs-cd-title, html[data-moeqs-theme="dark"] .moeqs-resume-title, html[data-moeqs-theme="dark"] .moeqs-dialog h3,
+html[data-moeqs-theme="dark"] .moeqs-calc-out strong, html[data-moeqs-theme="dark"] .moeqs-h, html[data-moeqs-theme="dark"] .moeqs-panel .moeqs-h { color: #fafafa; }
+html[data-moeqs-theme="dark"] .moeqs-h-light, html[data-moeqs-theme="dark"] .moeqs-page .moeqs-sec > .moeqs-h { color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs-sources-line a, html[data-moeqs-theme="dark"] .moeqs-explain-d summary, html[data-moeqs-theme="dark"] .moeqs .moeqs-link { color: var(--dm-info); }
+html[data-moeqs-theme="dark"] .moeqs :focus-visible { outline-color: var(--dm-info); }
+/* כרטיס המבחן */
+html[data-moeqs-theme="dark"] .moeqs-quiz { background: var(--mq-paper); border-color: var(--mq-line); border-top-color: var(--mq-primary); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-btn:not(.moeqs-primary):not(.moeqs-cta):not(.moeqs-cta2):not(.moeqs-ghost):not(.moeqs-checkbtn):not(.moeqs-danger) { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-field-border); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-flagbtn.is-on, html[data-moeqs-theme="dark"] .moeqs .moeqs-savebtn.is-on { background: color-mix(in srgb, var(--mq-accent) 22%, #2a2a2a); border-color: var(--mq-accent); color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-danger { background: transparent; color: var(--dm-bad); border-color: var(--dm-bad); }
+html[data-moeqs-theme="dark"] .moeqs-bar { background: #333333; }
+html[data-moeqs-theme="dark"] .moeqs-mode { color: var(--mq-ink); }
+html[data-moeqs-theme="dark"] .moeqs-mode:has(input:checked) { background: color-mix(in srgb, var(--mq-primary) 25%, #1e1e1e); }
+/* תיבות תשובה */
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-border); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans:hover:not([aria-disabled]) { border-color: #5a5a5a; background: var(--dm-hover); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-picked { border-color: var(--dm-info); background: color-mix(in srgb, var(--dm-info) 22%, #2a2a2a); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-correct, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-correct { background: var(--mq-ok-bg); border-color: var(--dm-ok); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-wrong, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-wrong { background: var(--mq-bad-bg); border-color: var(--dm-bad); }
+html[data-moeqs-theme="dark"] .moeqs-bubble { background: #3d3d3d; color: #f3f4f6; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-picked .moeqs-bubble { background: #3b68d8; color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-correct .moeqs-bubble, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-correct .moeqs-bubble { background: var(--dm-ok); color: #06240f; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-ans.is-wrong .moeqs-bubble, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-wrong .moeqs-bubble { background: var(--dm-bad); color: #3a0a0a; }
+html[data-moeqs-theme="dark"] .moeqs-feedback.is-correct, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-correct .moeqs-tag, html[data-moeqs-theme="dark"] .moeqs-rev-item.is-ok > .moeqs-ref, html[data-moeqs-theme="dark"] .moeqs-none, html[data-moeqs-theme="dark"] .moeqs-score.is-pass, html[data-moeqs-theme="dark"] .moeqs-table tr.is-pass strong { color: var(--dm-ok); }
+html[data-moeqs-theme="dark"] .moeqs-feedback.is-wrong, html[data-moeqs-theme="dark"] .moeqs-rev-ans li.is-wrong .moeqs-tag, html[data-moeqs-theme="dark"] .moeqs-rev-item.is-bad > .moeqs-ref, html[data-moeqs-theme="dark"] .moeqs-score.is-fail, html[data-moeqs-theme="dark"] .moeqs-table tr.is-fail strong { color: var(--dm-bad); }
+/* מפת השאלות */
+html[data-moeqs-theme="dark"] .moeqs .moeqs-cell { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-border); }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-cell.is-answered { background: #3b68d8; border-color: #3b68d8; color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-cell.is-correct { background: #1a8f4a; border-color: #1a8f4a; color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-cell.is-wrong { background: #c53030; border-color: #c53030; color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs-map-toggle, html[data-moeqs-theme="dark"] .moeqs-fsbtn { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-border); }
+html[data-moeqs-theme="dark"] .moeqs-quiz .moeqs-nav { background: var(--mq-paper); }
+/* הסברים */
+html[data-moeqs-theme="dark"] .moeqs-explain { background: #181818; border-right-color: var(--mq-accent); color: var(--mq-ink); }
+html[data-moeqs-theme="dark"] .moeqs-explain.is-none .moeqs-explain-body, html[data-moeqs-theme="dark"] .moeqs-zoomcap { color: var(--mq-ink-soft); }
+/* שרטוטים ותמונות נוסחה: רקע לבן וברור, כדי שלא ייפגעו */
+html[data-moeqs-theme="dark"] .moeqs .moeqs-figure .moeqs-img, html[data-moeqs-theme="dark"] .moeqs-explain .moeqs-img,
+html[data-moeqs-theme="dark"] .moeqs .moeqs-q .moeqs-imgline, html[data-moeqs-theme="dark"] .moeqs-ans-img, html[data-moeqs-theme="dark"] .moeqs-q .moeqs-img { background: #fff; border-radius: 6px; padding: 4px; box-sizing: border-box; }
+html[data-moeqs-theme="dark"] .moeqs .moeqs-q .moeqs-imgline { padding: 2px 6px; }
+/* משטחים נוספים (יומן, חשבון, עזרים, שאלות נפוצות, מדריך ועוד) */
+html[data-moeqs-theme="dark"] .moeqs-panel, html[data-moeqs-theme="dark"] .moeqs-cd, html[data-moeqs-theme="dark"] .moeqs-aid-card, html[data-moeqs-theme="dark"] .moeqs-cm-topic,
+html[data-moeqs-theme="dark"] .moeqs-lib-item, html[data-moeqs-theme="dark"] .moeqs-faq-item, html[data-moeqs-theme="dark"] .moeqs-guide-card, html[data-moeqs-theme="dark"] .moeqs-legal,
+html[data-moeqs-theme="dark"] .moeqs-dialog { background: var(--mq-paper); color: var(--mq-ink); border-color: var(--mq-line); }
+html[data-moeqs-theme="dark"] .moeqs-guide-card a, html[data-moeqs-theme="dark"] .moeqs-legal a { color: var(--dm-info); }
+html[data-moeqs-theme="dark"] .moeqs-aid-card h3, html[data-moeqs-theme="dark"] .moeqs-cm-num { color: #fafafa; }
+html[data-moeqs-theme="dark"] .moeqs-trend-line em { background: var(--mq-paper); color: var(--dm-ok); }
+html[data-moeqs-theme="dark"] .moeqs-table tr:nth-child(even) td { background: #242424; }
+html[data-moeqs-theme="dark"] .moeqs-table td { color: var(--mq-ink); }
+html[data-moeqs-theme="dark"] .moeqs-form input[type="text"], html[data-moeqs-theme="dark"] .moeqs-form input[type="email"], html[data-moeqs-theme="dark"] .moeqs-form input[type="tel"],
+html[data-moeqs-theme="dark"] .moeqs-form input[type="password"], html[data-moeqs-theme="dark"] .moeqs-form input[type="url"], html[data-moeqs-theme="dark"] .moeqs-form textarea,
+html[data-moeqs-theme="dark"] .moeqs-form select, html[data-moeqs-theme="dark"] .moeqs-inline-form select, html[data-moeqs-theme="dark"] .moeqs-searchbar input[type="search"],
+html[data-moeqs-theme="dark"] .moeqs-inline-form input[type="number"], html[data-moeqs-theme="dark"] .moeqs-calc-inwrap input, html[data-moeqs-theme="dark"] .moeqs-calc-row select,
+html[data-moeqs-theme="dark"] .moeqs-cm-tools input[type=search], html[data-moeqs-theme="dark"] .moeqs-lib-search input[type=search], html[data-moeqs-theme="dark"] .moeqs-lib-tools input[type=search] { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-field-border); }
+html[data-moeqs-theme="dark"] .moeqs-calc-unit, html[data-moeqs-theme="dark"] .moeqs-pw-toggle { background: #333333; color: var(--mq-ink); border-color: var(--dm-field-border); }
+
+/* ---------- דיווח על בעיה בשאלה ---------- */
+.moeqs-reportrow { display: flex; justify-content: flex-end; margin: 6px 0 0; } /* בעברית (RTL) flex-end הוא הצד השמאלי */
+.moeqs-reportbtn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; padding: 0; border-radius: 50%; border: 1px solid transparent; background: transparent; color: var(--mq-ink-soft); cursor: pointer; opacity: .75; transition: opacity .12s, background .12s, color .12s; }
+.moeqs-reportbtn:hover, .moeqs-reportbtn:focus-visible { opacity: 1; color: var(--mq-primary); background: color-mix(in srgb, var(--mq-primary) 10%, transparent); border-color: color-mix(in srgb, var(--mq-primary) 35%, transparent); }
+@media print { .moeqs-reportrow { display: none; } }
+.moeqs-report-dlg { max-width: 520px; }
+.moeqs-report-dlg::backdrop { background: rgba(10, 14, 40, .72); }
+.moeqs-rp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 4px; }
+.moeqs-rp-head h3 { margin: 0; font-size: 1.25em; }
+.moeqs-rp-x { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--mq-line); background: transparent; color: var(--mq-ink); font-size: 22px; line-height: 1; cursor: pointer; flex: none; }
+.moeqs-rp-x:hover, .moeqs-rp-x:focus-visible { background: var(--mq-cream); }
+.moeqs-rp-ctx { margin: 0 0 10px; font-size: .88em; color: var(--mq-ink-soft); }
+.moeqs-rp-sub { display: block; margin: 0 0 6px; font-weight: 800; }
+.moeqs-report-dlg textarea { width: 100%; min-height: 120px; resize: vertical; padding: 11px 13px; font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; }
+.moeqs-rp-msg { min-height: 1.4em; margin: 8px 0 0; font-weight: 700; }
+.moeqs-rp-msg.is-ok { color: var(--mq-ok); }
+.moeqs-rp-msg.is-bad { color: var(--mq-bad); }
+.moeqs-rp-act { display: flex; justify-content: flex-start; margin-top: 12px; }
+html[data-moeqs-theme="dark"] .moeqs-report-dlg textarea { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-field-border); }
+html[data-moeqs-theme="dark"] .moeqs-rp-msg.is-ok { color: var(--dm-ok); }
+html[data-moeqs-theme="dark"] .moeqs-rp-msg.is-bad { color: var(--dm-bad); }
+html[data-moeqs-theme="dark"] .moeqs-reportbtn:hover, html[data-moeqs-theme="dark"] .moeqs-reportbtn:focus-visible { color: #ffb08a; }
+
+/* ---------- הדר: לוגו, תפריט ובלוק המשתמש באותה שורה (Flexbox), בלי חפיפה ---------- */
+/* (אותם כללים מודפסים גם ב-<head> בכל עמודי האתר, כדי שיחולו מיד גם בעמודים שאינם של הסימולטור) */
+.moeqs-hdr-row { display: flex !important; flex-wrap: nowrap !important; align-items: center !important; justify-content: space-between !important; gap: 16px !important; }
+.moeqs-hdr-row > * { min-width: 0; }
+.moeqs-hdr-row > .wp-block-group:has(.wp-block-navigation) { flex: 1 1 auto; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+.moeqs-hdr-row > .moeqs-userchip { position: static !important; transform: none !important; flex: 0 0 auto !important; flex-shrink: 0 !important; white-space: nowrap !important; }
+@media (max-width: 781px) { .moeqs-hdr-row { flex-wrap: wrap !important; gap: 0 16px !important; } .moeqs-hdr-row > .moeqs-userchip { flex-basis: 100% !important; padding: 2px 0 8px !important; } }
+/* תפריט נפתח בהדר: רקע כהה אטום, גבול עדין, מעל כל אלמנט */
+body.moeqs-page header.wp-block-template-part .wp-block-navigation .wp-block-navigation__submenu-container,
+body.moeqs-page header.wp-block-template-part .wp-block-navigation .wp-block-navigation__submenu-container.has-background { background: #111827 !important; background-color: #111827 !important; border: 1px solid rgba(255,255,255,.18) !important; z-index: 9999 !important; backdrop-filter: none !important; opacity: 1 !important; }
+/* ריווח עליון לתוכן הראשי (לא בזמן מבחן) */
+body.moeqs-page:not(.moeqs-in-quiz) main, body.moeqs-page:not(.moeqs-in-quiz) .site-main, body.moeqs-page:not(.moeqs-in-quiz) #main { padding-top: 28px !important; }
+
+/* ---------- סקירת מאגר (לוח הבקרה ובחזית, לשונית בעמוד "ניהול") ---------- */
+.moeqs-rv-bar { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; margin: 14px 0; }
+.moeqs-rv-filters, .moeqs-rv-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+#moeqs-rv-body .moeqs.moeqs-quiz { max-width: 1100px; margin: 0 0 14px !important; padding: 18px 24px; }
+#moeqs-rv-body .moeqs-ans { cursor: default; }
+.moeqs-rv-ok { margin-inline-start: auto; color: #166534; font-weight: 800; font-size: .85em; padding-top: 4px; }
+.moeqs-rv-form { max-width: 1100px; padding: 14px 20px; margin-top: 14px; }
+.moeqs-rv-form[hidden] { display: none; }
+.moeqs-rv-form textarea { width: 100%; font: inherit; }
+.moeqs-rv-imgs ul { margin: 8px 0; padding: 0; list-style: none; }
+.moeqs-rv-imgs li { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0; }
+.moeqs-rv-note { min-height: 1.4em; font-weight: 700; color: #b45309; }
+.moeqs-rv-msg { font-weight: 700; margin-inline-start: 10px; }
+/* בחזית: על הרקע הכהה של האתר, באותו עיצוב של שאר העמודים */
+.moeqs-rv-front .moeqs-rv-intro { color: rgba(255,255,255,.85); margin: 0 0 6px; }
+.moeqs-rv-front .moeqs-rv-note { color: #fbbf24; }
+.moeqs-rv-front .moeqs-rv-filters .moeqs-btn[aria-pressed="true"] { background: var(--mq-primary) !important; border-color: var(--mq-primary) !important; color: #fff !important; }
+.moeqs-rv-front #rv-jump { width: 210px; min-height: 44px; padding: 8px 12px; font: inherit; color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; }
+.moeqs-rv-front .moeqs-rv-form { background: var(--mq-paper); color: var(--mq-ink); border-radius: 14px; box-shadow: var(--mq-shadow); }
+.moeqs-rv-front .moeqs-rv-form h3 { margin: 0 0 10px; }
+.moeqs-rv-front .moeqs-rv-form textarea { color: var(--mq-ink); background: #fff; border: 2px solid #8a93a6; border-radius: 10px; padding: 9px 12px; }
+.moeqs-rv-front .button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 6px 16px; border-radius: 10px; border: 2px solid var(--mq-dark); background: var(--mq-paper); color: var(--mq-dark); font: inherit; font-weight: 700; cursor: pointer; }
+.moeqs-rv-front .button-primary { background: var(--mq-primary); border-color: var(--mq-primary); color: #fff; }
+.moeqs-rv-front .button:disabled { opacity: .5; cursor: default; }
+.moeqs-rv-front .description { color: var(--mq-ink-soft); }
+.moeqs-rv-front .notice { background: #fff7ed; color: #7c2d12; border-right: 4px solid #f59e0b; padding: 6px 12px; border-radius: 8px; }
+.moeqs-rv-front .notice p { margin: 4px 0; }
+/* לשוניות עמוד "ניהול" ותגית מונה */
+.moeqs-mtabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+.moeqs-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; margin-inline-start: 8px; border-radius: 999px; background: #dc2626; color: #fff; font-size: .78em; font-weight: 800; line-height: 1; }
+/* דיווחי משתמשים בחזית */
+.moeqs-rp-front .moeqs-rp-views { margin: 0 0 14px; }
+.moeqs-rp-table td { vertical-align: top; }
+.moeqs-rp-table .moeqs-rp-msgcell { white-space: normal; min-width: 240px; max-width: 420px; }
+.moeqs-rp-table tr.is-open td:first-child { box-shadow: inset -4px 0 0 #f59e0b; }
+.moeqs-rp-acts { display: flex; flex-wrap: wrap; gap: 6px; }
+.moeqs-rp-acts form { margin: 0; display: inline; }
+.moeqs-rp-acts .moeqs-btn { min-height: 36px; padding: 5px 12px; font-size: .9em; }
+.moeqs-rp-st.is-new { color: #b45309; font-weight: 800; }
+.moeqs-rp-st.is-done { color: var(--mq-ok); font-weight: 700; }
+/* מצב כהה */
+html[data-moeqs-theme="dark"] .moeqs-rv-ok, html[data-moeqs-theme="dark"] .moeqs-rp-st.is-done { color: var(--dm-ok); }
+html[data-moeqs-theme="dark"] .moeqs-rp-st.is-new { color: #fbbf24; }
+html[data-moeqs-theme="dark"] .moeqs-rv-front #rv-jump, html[data-moeqs-theme="dark"] .moeqs-rv-front .moeqs-rv-form textarea { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-field-border); }
+html[data-moeqs-theme="dark"] .moeqs-rv-front .button { background: var(--dm-surface); color: var(--mq-ink); border-color: var(--dm-field-border); }
+html[data-moeqs-theme="dark"] .moeqs-rv-front .button-primary { background: var(--mq-primary); border-color: var(--mq-primary); color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs-rv-front .notice { background: #3a2a10; color: #fde68a; }
+
+
+/* =====================================================================
+   3.19.4 – מסך מבחן בטור אחד נקי, רקע בהיר בזמן מבחן ומצב ריכוז (בלי פוטר התבנית)
+   ===================================================================== */
+/* סדר בכרטיס: סרגל עליון ← נוסח השאלה ← שרטוט/טבלה ממורכזים ← ארבע תשובות ← כפתורי ניווט ← אייקון דיווח בפינה השמאלית */
+.moeqs.moeqs-quiz .moeqs-qcard, .moeqs.moeqs-quiz .moeqs-qcard.has-fig { display: block; }
+.moeqs.moeqs-quiz .moeqs-q { width: 100%; text-align: right; }
+.moeqs.moeqs-quiz .moeqs-qfig { display: block; width: 100%; margin: 0; text-align: center; }
+.moeqs.moeqs-quiz .moeqs-qfig .moeqs-figure .moeqs-img, .moeqs.moeqs-quiz .moeqs-q .moeqs-figure .moeqs-img {
+	display: block; margin: 14px auto; max-width: 100%; max-height: 35vh; width: auto; height: auto; object-fit: contain; /* 3.19.6: לפי גובה המסך, כדי שהתשובות והכפתורים ייכנסו בלי גלילה */
+}
+.moeqs.moeqs-quiz .moeqs-answers, .moeqs.moeqs-quiz .moeqs-answers.two-col,
+.moeqs.moeqs-quiz[data-density] .moeqs-answers, .moeqs.moeqs-quiz[data-density] .moeqs-answers.two-col { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.moeqs.moeqs-quiz .moeqs-nav, .moeqs.moeqs-quiz[data-density] .moeqs-nav { justify-content: center; margin-top: 20px; }
+.moeqs.moeqs-quiz .moeqs-exam > .moeqs-reportrow { justify-content: flex-end; margin: 10px 0 0; } /* RTL: flex-end = שמאל */
+
+/* מצב בהיר בזמן מבחן: רקע חלק ונקי במקום רשת כהה, וכרטיס לבן עם צללית עדינה (המצב הכהה לא משתנה) */
+html:not([data-moeqs-theme="dark"]):has(body.moeqs-in-quiz), html:not([data-moeqs-theme="dark"]) body.moeqs-in-quiz { background: #f3f5f8 !important; background-color: #f3f5f8 !important; }
+html:not([data-moeqs-theme="dark"]) body.moeqs-in-quiz .moeqs.moeqs-quiz { box-shadow: 0 4px 24px -6px rgba(16, 24, 40, .10), 0 1px 3px rgba(16, 24, 40, .06); border-color: #e4e7ec; border-top-color: var(--mq-primary); }
+
+/* מצב ריכוז: בזמן מבחן/סימולציה (?sim=) מסתירים את פוטר התבנית ואת תחתית האתר; שורת זכויות היוצרים (.moeqs-legalbar) נשארת */
+body.moeqs-in-quiz footer.wp-block-template-part, body.moeqs-in-quiz .wp-site-blocks > footer, body.moeqs-in-quiz .site-footer,
+body.moeqs-in-quiz #colophon, body.moeqs-in-quiz #footer, body.moeqs-in-quiz .footer-widgets, body.moeqs-in-quiz .moeqs-sitefoot, body.moeqs-in-quiz .moeqs-footer-links { display: none !important; }
+body.moeqs-in-quiz main, body.moeqs-in-quiz .site-main, body.moeqs-in-quiz #main, body.moeqs-in-quiz #content { min-height: calc(100vh - 160px); }
+/* מצב כהה: גם שורת זכויות היוצרים בתחתית בשחור-פחם (במקום הנייבי מההגדרות) */
+html[data-moeqs-theme="dark"] .moeqs-legalbar { background: #121212 !important; border-top: 1px solid #333333; }
+
+/* 3.19.5 – חץ קטן בכפתור "כל השאלות" (צד שמאל של הטקסט ב-RTL); מסתובב כלפי מעלה כשמפת השאלות פתוחה (aria-expanded) */
+.moeqs-map-toggle { display: inline-flex; align-items: center; gap: 6px; }
+.moeqs-map-toggle::after {
+	content: ""; flex: none; width: 11px; height: 11px; background-color: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+	transition: transform 0.2s ease;
+}
+.moeqs-map-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .moeqs-map-toggle::after { transition: none; } }
+@media (forced-colors: active) { .moeqs-map-toggle::after { background-color: ButtonText; } }
+
+/* 3.19.6 – הדר בשורה אחת בזמן מבחן (גם כשמופיע "ניהול" אצל מנהל): מיכל 1260px, ריווח מעט קטן יותר בין פריטי התפריט, בלי שבירת שורה */
+@media (min-width: 761px) {
+	html body.moeqs-in-quiz header.wp-block-template-part > .wp-block-group, html body.moeqs-in-quiz .site-header > .wp-block-group, html body.moeqs-in-quiz #masthead > .wp-block-group { max-width: 1260px !important; width: 94% !important; }
+}
+@media (min-width: 782px) {
+	html body.moeqs-page header.wp-block-template-part .moeqs-hdr-row, html body.moeqs-page header.wp-block-template-part .wp-block-navigation,
+	html body.moeqs-page header.wp-block-template-part .wp-block-navigation__container, html body.moeqs-page header.wp-block-template-part .wp-block-page-list { flex-wrap: nowrap !important; white-space: nowrap !important; }
+	html body.moeqs-page header.wp-block-template-part .wp-block-navigation__container, html body.moeqs-page header.wp-block-template-part .wp-block-page-list { gap: clamp(.6rem, .85vw, 1.1rem) !important; }
+}
+/* 3.19.6 – מסכים נמוכים (לפטופים): ריווח עליון ופנימי מעט קטן יותר, כדי שהתשובות וכפתורי הניווט ייכנסו במסך גם עם תמונה */
+@media (min-width: 761px) and (max-height: 870px) {
+	body.moeqs-in-quiz .moeqs.moeqs-quiz, .moeqs-page.moeqs-in-quiz .moeqs.moeqs-quiz { margin: 12px auto 20px !important; padding-top: 20px; padding-bottom: 20px; }
+	.moeqs.moeqs-quiz .moeqs-nav, .moeqs.moeqs-quiz[data-density] .moeqs-nav { margin-top: 14px; }
+}
+
+/* =====================================================================
+   3.20.0 – לוח מועדי בחינות, בדיקת ציונים ושאלות על הרשמה ותוצאות
+   ===================================================================== */
+.moeqs-exboard { max-width: 1100px; scroll-margin-top: 90px; }
+.moeqs-exboard .moeqs-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .moeqs-exboard .moeqs-guide-grid { grid-template-columns: 1fr; } }
+.moeqs-exboard .moeqs-guide-card { display: flex; flex-direction: column; }
+.moeqs-exboard .moeqs-guide-card .moeqs-exres-act { margin-top: auto !important; padding-top: 14px; }
+.moeqs-exboard .moeqs-guide-card h3 { display: flex; align-items: center; gap: 8px; }
+.moeqs-exboard .moeqs-guide-card h3 svg { flex: none; color: var(--gc); }
+.moeqs-excard-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin: 0 0 12px; }
+.moeqs-excard-head h3 { margin: 0 !important; }
+.moeqs-exlegend { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.moeqs-exlegend .moeqs-exst { font-size: .78em; padding: 2px 10px; }
+/* הטבלה */
+.moeqs-extable-wrap { border: 1px solid #e3e7ee; border-radius: 12px; overflow: hidden; }
+.moeqs-extable { width: 100%; border-collapse: collapse; font-size: .95em; }
+.moeqs-extable th { background: #f2f5fa; color: #1b2340; font-weight: 800; font-size: .88em; line-height: 1.35; text-align: right; padding: 12px 14px; border-bottom: 1px solid #e3e7ee; vertical-align: bottom; }
+.moeqs-extable td { padding: 13px 14px; border-bottom: 1px solid #edf0f5; vertical-align: middle; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.moeqs-extable tbody tr:last-child td { border-bottom: 0; }
+.moeqs-extable tbody tr:nth-child(even) td { background: #fafbfd; }
+.moeqs-extable tr.is-next td { background: color-mix(in srgb, #2563eb 6%, #fff) !important; }
+.moeqs-extable tr.is-next td:first-child { box-shadow: inset -4px 0 0 #2563eb; } /* פס בצד ימין (RTL) */
+.moeqs-extable tr.is-past td { color: #8a93a6; }
+.moeqs-extable tr.is-past td strong { color: inherit; }
+.moeqs-extime { color: #5b6478; font-size: .9em; white-space: nowrap; }
+.moeqs-exnext { display: inline-block; margin-inline-start: 6px; padding: 1px 8px; border-radius: 999px; background: #2563eb; color: #fff; font-size: .74em; font-weight: 800; vertical-align: 1px; }
+.moeqs-exna { color: #8a93a6; font-size: .9em; }
+/* תגיות סטטוס */
+.moeqs-exst { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 999px; font-size: .85em; font-weight: 800; white-space: nowrap; border: 1px solid transparent; }
+.moeqs-exst::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.moeqs-exst.is-open { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.moeqs-exst.is-soon { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.moeqs-exst.is-done { background: #eef0f4; color: #4b5563; border-color: #e1e4ea; }
+.moeqs-exnote, .moeqs-exempty { margin: 12px 0 0 !important; font-size: .88em; color: #5b6478; }
+/* כרטיסי ציונים והרשמה */
+.moeqs-exres-act { margin: 14px 0 0 !important; }
+.moeqs .moeqs-guide-card a.moeqs-exres-btn, .moeqs a.moeqs-exres-btn { background: #16a34a; border-color: #16a34a; color: #fff; text-decoration: none; font-weight: 800; }
+.moeqs .moeqs-guide-card a.moeqs-exreg-btn { background: transparent; border-color: #c4572a; color: #b4491f; text-decoration: none; font-weight: 800; }
+.moeqs-exres-btn svg { flex: none; }
+.moeqs-exres-inline { margin: 12px 0 0 !important; }
+.moeqs-exres-inline .moeqs-exres-btn { width: 100%; min-height: 42px; padding: 8px 14px; font-size: .95em; }
+/* שאלות נפוצות */
+.moeqs-exfaq { max-width: 900px; margin: 30px auto 0; }
+.moeqs-exfaq-title { text-align: center; color: #fff; font-size: 1.35em; font-weight: 900; margin: 0 0 14px; }
+/* טלפון: כל שורה ככרטיס, עם תווית לכל שדה */
+@media (max-width: 760px) {
+	.moeqs-extable-wrap { border: 0; border-radius: 0; overflow: visible; }
+	.moeqs-extable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.moeqs-extable, .moeqs-extable tbody, .moeqs-extable tr, .moeqs-extable td { display: block; width: 100%; box-sizing: border-box; }
+	.moeqs-extable tr { border: 1px solid #e3e7ee; border-radius: 12px; margin: 0 0 12px; overflow: hidden; }
+	.moeqs-extable td { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 14px; text-align: left; }
+	.moeqs-extable td::before { content: attr(data-label); font-weight: 800; color: #1b2340; text-align: right; font-size: .88em; }
+	.moeqs-extable tbody tr:nth-child(even) td { background: transparent; }
+	.moeqs-extable tr.is-next td:first-child { box-shadow: none; }
+	.moeqs-extable tr.is-next { border-color: #2563eb; box-shadow: 0 0 0 1px #2563eb; }
+}
+/* מצב כהה */
+html[data-moeqs-theme="dark"] .moeqs-extable-wrap, html[data-moeqs-theme="dark"] .moeqs-extable tr { border-color: #333333; }
+html[data-moeqs-theme="dark"] .moeqs-extable th { background: #262626; color: #f3f4f6; border-bottom-color: #333333; }
+html[data-moeqs-theme="dark"] .moeqs-extable td { border-bottom-color: #2c2c2c; color: var(--mq-ink); }
+html[data-moeqs-theme="dark"] .moeqs-extable td::before { color: #f3f4f6; }
+html[data-moeqs-theme="dark"] .moeqs-extable tbody tr:nth-child(even) td { background: #222222; }
+html[data-moeqs-theme="dark"] .moeqs-extable tr.is-next td { background: #1d2433 !important; }
+html[data-moeqs-theme="dark"] .moeqs-extable tr.is-past td, html[data-moeqs-theme="dark"] .moeqs-exna, html[data-moeqs-theme="dark"] .moeqs-extime,
+html[data-moeqs-theme="dark"] .moeqs-exnote, html[data-moeqs-theme="dark"] .moeqs-exempty { color: #9ca3af; }
+html[data-moeqs-theme="dark"] .moeqs-exst.is-open { background: #10301d; color: #6ee7a0; border-color: #1f5c38; }
+html[data-moeqs-theme="dark"] .moeqs-exst.is-soon { background: #36290c; color: #fcd34d; border-color: #5c4511; }
+html[data-moeqs-theme="dark"] .moeqs-exst.is-done { background: #2a2a2a; color: #b4b4b4; border-color: #3d3d3d; }
+html[data-moeqs-theme="dark"] .moeqs a.moeqs-btn.moeqs-exres-btn { background: #16a34a !important; border-color: #16a34a !important; color: #fff !important; }
+html[data-moeqs-theme="dark"] .moeqs a.moeqs-btn.moeqs-exreg-btn { background: transparent !important; border-color: #e07a4f !important; color: #f0a07c !important; }
+html[data-moeqs-theme="dark"] .moeqs-exboard .moeqs-guide-card { border-top-color: var(--gc); } /* פס ההדגשה הצבעוני נשמר גם במצב כהה */
+html[data-moeqs-theme="dark"] .moeqs-exboard .moeqs-guide-card h3 { color: #fafafa; }
+@media print { .moeqs-exres-act, .moeqs-exlegend { display: none; } }
+
+/* ---------- 3.21.5: ניהול משתמשים – טבלה ברוחב מלא ועמודת "תשלום / אופן הצטרפות" ---------- */
+.moeqs-paytag { display: inline-block; padding: 3px 10px; border-radius: 999px; border: 1px solid transparent; font-size: .9em; font-weight: 800; line-height: 1.5; white-space: nowrap; cursor: default; }
+.moeqs-paytag.is-paid { background: #dcfce7; color: #14532d; border-color: #86efac; }
+.moeqs-paytag.is-code { background: #ede9fe; color: #4c1d95; border-color: #c4b5fd; }
+.moeqs-paytag.is-admin { background: #dbeafe; color: #1e3a8a; border-color: #93c5fd; }
+.moeqs-paytag.is-none { background: #f3f4f6; color: #6b7280; border-color: #e5e7eb; font-weight: 600; }
+html[data-moeqs-theme="dark"] .moeqs-paytag.is-paid { background: #14532d; color: #dcfce7; border-color: #22c55e; }
+html[data-moeqs-theme="dark"] .moeqs-paytag.is-code { background: #3b1d70; color: #ede9fe; border-color: #8b5cf6; }
+html[data-moeqs-theme="dark"] .moeqs-paytag.is-admin { background: #1e3a8a; color: #dbeafe; border-color: #3b82f6; }
+html[data-moeqs-theme="dark"] .moeqs-paytag.is-none { background: #2a2a2a; color: #a3a3a3; border-color: #3f3f3f; }
+
+/* מחשב: רשימת המשתמשים יוצאת מהעמודה הצרה (1120px) לרוחב של עד 1440px, וכל העמודות נראות בלי גלילה אופקית.
+   מובייל וטאבלט (מתחת ל-1024px): ללא שינוי – הטבלה נגללת לרוחב כמו קודם. */
+@media (min-width: 1024px) {
+	body .moeqs.moeqs-manage-users {
+		max-width: none;
+		width: min(1440px, 96vw);
+		margin-left: calc(50% - min(1440px, 96vw) / 2) !important;
+		margin-right: calc(50% - min(1440px, 96vw) / 2) !important;
+	}
+	.moeqs-manage-users .moeqs-panel { padding: 14px; }
+	.moeqs-manage-users .moeqs-table { font-size: .86em; }
+	.moeqs-manage-users .moeqs-table th, .moeqs-manage-users .moeqs-table td { padding: 8px 7px; line-height: 1.4; vertical-align: middle; }
+	.moeqs-manage-users .moeqs-table td:nth-child(3) { overflow-wrap: anywhere; } /* אימייל ארוך נשבר במקום להרחיב את הטבלה */
+	.moeqs-manage-users .moeqs-table td:nth-child(n+4):nth-child(-n+11) { white-space: nowrap; } /* טלפון, תאריכים, תשלום ומספרים בשורה אחת */
+	.moeqs-manage-users .moeqs-table td:nth-child(5) { white-space: normal; } /* עיר */
+	.moeqs-manage-users .moeqs-table td:last-child .moeqs-btn { padding: 6px 10px; font-size: .92em; min-height: 0; white-space: nowrap; }
+}
+
+/* ---------- 3.21.9: עוגן ללוח המועדים + קישור "לכל מועדי הבחינות" בכרטיס הטיימר ---------- */
+.moeqs-exboard-anchor { display: block; max-width: none; width: 100%; margin: 0; padding: 0; scroll-margin-top: 110px; }
+.moeqs-cd .moeqs-cd-more { margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--mq-line); font-size: .9em; line-height: 1.4; }
+.moeqs-cd .moeqs-cd-all { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-weight: 800; color: var(--mq-primary); text-decoration: none; background: color-mix(in srgb, var(--mq-primary) 8%, #fff); border: 1px solid color-mix(in srgb, var(--mq-primary) 30%, #fff); transition: background .15s ease, color .15s ease; }
+.moeqs-cd .moeqs-cd-all:hover, .moeqs-cd .moeqs-cd-all:focus-visible { background: var(--mq-primary); color: #fff; text-decoration: none; }
+.moeqs-cd .moeqs-cd-all span { font-size: 1.05em; line-height: 1; }
+html[data-moeqs-theme="dark"] .moeqs-cd .moeqs-cd-more { border-top-color: #3f3f3f; }
+html[data-moeqs-theme="dark"] .moeqs-cd .moeqs-cd-all { color: #fdba74; background: rgba(253, 186, 116, .1); border-color: rgba(253, 186, 116, .4); }
+html[data-moeqs-theme="dark"] .moeqs-cd .moeqs-cd-all:hover, html[data-moeqs-theme="dark"] .moeqs-cd .moeqs-cd-all:focus-visible { background: #fdba74; color: #1a1a1a; }
+@media (prefers-reduced-motion: reduce) { .moeqs-cd .moeqs-cd-all { transition: none; } }
+
+/* ---------- 3.21.10: כפתור "ייצוא שאלות ותשובות לאקסל" בעמוד "ניהול" ---------- */
+.moeqs-manage .moeqs-btn.moeqs-btn-excel { display: inline-flex; align-items: center; gap: 8px; background: var(--mq-ok, #15803d); border-color: var(--mq-ok, #15803d); color: #fff; font-weight: 800; }
+.moeqs-manage .moeqs-btn.moeqs-btn-excel:hover, .moeqs-manage .moeqs-btn.moeqs-btn-excel:focus-visible { background: #166534; border-color: #166534; color: #fff; }
+.moeqs-manage .moeqs-btn.moeqs-btn-excel svg { flex: none; }
+html[data-moeqs-theme="dark"] .moeqs-manage .moeqs-btn.moeqs-btn-excel { background: #16a34a; border-color: #16a34a; color: #fff; }
+html[data-moeqs-theme="dark"] .moeqs-manage .moeqs-btn.moeqs-btn-excel:hover { background: #15803d; border-color: #15803d; }
+/* 3.21.11: הכפתור עבר לקבוצת הכפתורים שבצד ימין, כשלישי בשורה (אחרי "הגדרת סליקה"), באותו גובה ורווח */
+.moeqs-manage > .moeqs-actions { gap: 10px; align-items: stretch; }
+.moeqs-manage > .moeqs-actions .moeqs-btn { display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 600px) {
+	.moeqs-manage > .moeqs-actions { flex-direction: column; align-items: stretch; }
+	.moeqs-manage > .moeqs-actions .moeqs-btn { width: 100%; }
+}
+
+/* =====================================================================
+   3.21.25 – שרטוטים גדולים וקריאים, בלי חיתוך טקסט, ותשובות אחידות בכל השאלות
+   ===================================================================== */
+/* 1. שום מיכל של שאלה או שרטוט לא חותך תוכן: בלי גובה קבוע ובלי overflow:hidden אנכי */
+.moeqs.moeqs-quiz { overflow-x: clip; overflow-y: visible; }
+.moeqs.moeqs-quiz .moeqs-qcard, .moeqs.moeqs-quiz .moeqs-qcard.has-fig, .moeqs.moeqs-quiz .moeqs-q,
+.moeqs.moeqs-quiz .moeqs-q .moeqs-text, .moeqs.moeqs-quiz .moeqs-qfig, .moeqs.moeqs-quiz .moeqs-figure { overflow: visible; height: auto; max-height: none; }
+.moeqs.moeqs-quiz .moeqs-q, .moeqs.moeqs-quiz[data-density] .moeqs-q, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-q { margin-bottom: 12px; }
+
+/* 2. שרטוט השאלה: רוחב קריא בתוך הכרטיס (נקבע ב-JS לפי גודל השרטוט ורוחב הכרטיס), max-width 100%, גובה פרופורציונלי */
+.moeqs.moeqs-quiz .moeqs-qfig { display: block; width: 100%; margin: 14px 0 20px; padding: 0; text-align: center; }
+.moeqs.moeqs-quiz .moeqs-qfig .moeqs-figure, .moeqs.moeqs-quiz .moeqs-q .moeqs-figure { display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 100%; }
+.moeqs.moeqs-quiz .moeqs-qfig .moeqs-figure .moeqs-img, .moeqs.moeqs-quiz .moeqs-q .moeqs-figure .moeqs-img {
+	display: block; margin: 0 auto; width: var(--figw, auto); max-width: 100%; height: auto; max-height: none; object-fit: contain; cursor: zoom-in;
+}
+.moeqs.moeqs-quiz .moeqs-zoomcap {
+	display: inline-flex; align-items: center; gap: 6px; margin: 10px auto 0; padding: 5px 14px; min-height: 34px;
+	border: 1px solid var(--mq-line); border-radius: 999px; background: transparent; color: var(--mq-ink-soft);
+	font: inherit; font-size: .85em; font-weight: 600; line-height: 1.3; cursor: zoom-in;
+}
+.moeqs.moeqs-quiz .moeqs-zoomcap:hover { border-color: var(--mq-info); color: var(--mq-info); }
+.moeqs.moeqs-quiz .moeqs-zoomcap:focus-visible { outline: 3px solid var(--mq-info); outline-offset: 2px; }
+html[data-moeqs-theme="dark"] .moeqs.moeqs-quiz .moeqs-zoomcap { color: #d1d5db; border-color: var(--dm-border, #3d3d3d); }
+html[data-moeqs-theme="dark"] .moeqs.moeqs-quiz .moeqs-zoomcap:hover { color: #fff; border-color: #6b7280; }
+/* שרטוט בתוך ההסבר: גם הוא ברוחב הכרטיס לכל היותר, בגובה פרופורציונלי */
+.moeqs .moeqs-explain-body .moeqs-figure .moeqs-img { max-width: 100%; height: auto; }
+
+/* 3. תשובות: טור אחד ברוחב מלא, גובה וריווח נוחים, גופן אחיד – בכל השאלות, בדסקטופ, במובייל ובמצב כהה */
+.moeqs.moeqs-quiz .moeqs-answers, .moeqs.moeqs-quiz .moeqs-answers.two-col,
+.moeqs.moeqs-quiz[data-density] .moeqs-answers, .moeqs.moeqs-quiz[data-density] .moeqs-answers.two-col,
+.moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-answers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; width: 100%; }
+.moeqs.moeqs-quiz .moeqs-ans, .moeqs.moeqs-quiz[data-density] .moeqs-ans, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-ans,
+.moeqs.moeqs-quiz[data-density="roomy"] .moeqs-ans, .moeqs.moeqs-quiz[data-density="normal"] .moeqs-ans, .moeqs.moeqs-quiz[data-density="compact"] .moeqs-ans {
+	display: flex; align-items: center; width: 100%; min-height: 56px; box-sizing: border-box;
+	padding: 12px 16px; gap: 14px; border-radius: 12px; font-size: var(--qfs, 16px); line-height: 1.55;
+}
+.moeqs.moeqs-quiz .moeqs-bubble, .moeqs.moeqs-quiz[data-density] .moeqs-bubble, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-bubble {
+	flex: 0 0 auto; width: 36px; height: 36px; border-radius: 10px; font-size: 1em; line-height: 1;
+}
+.moeqs.moeqs-quiz .moeqs-ans-text { flex: 1 1 auto; min-width: 0; font-size: var(--qfs, 16px); line-height: 1.55; padding-top: 0; overflow-wrap: anywhere; }
+.moeqs.moeqs-quiz .moeqs-ans-img { max-width: min(100%, 360px); height: auto; }
+@media (max-width: 600px) {
+	.moeqs.moeqs-quiz .moeqs-ans, .moeqs.moeqs-quiz[data-density] .moeqs-ans, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-ans { min-height: 52px; padding: 11px 12px; gap: 12px; }
+	.moeqs.moeqs-quiz .moeqs-bubble, .moeqs.moeqs-quiz[data-density] .moeqs-bubble, .moeqs.moeqs-quiz.has-qimg[data-density] .moeqs-bubble { width: 34px; height: 34px; }
+	.moeqs.moeqs-quiz .moeqs-qfig { margin: 10px 0 16px; }
+}
+
+/* 4. שמירה והמשך: חלונית "המיקום נשמר" ובאנר "נמצא מבחן/תרגול שמור" */
+.moeqs-saved-dlg .moeqs-saved-msg { font-size: 1.05em; margin: 0 0 6px; }
+.moeqs-saved-dlg .moeqs-saved-pos, .moeqs-resume-info { color: var(--mq-ink-soft); font-size: .92em; margin: 0 0 12px; }
+.moeqs-saved-dlg .moeqs-actions, .moeqs-resume-dlg .moeqs-actions, .moeqs-resume .moeqs-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 0; }
+.moeqs-resume-dlg h3 { line-height: 1.45; }
+.moeqs-resume-hub { margin: 0 0 22px; }
+@media (max-width: 600px) {
+	.moeqs-saved-dlg .moeqs-actions .moeqs-btn, .moeqs-resume-dlg .moeqs-actions .moeqs-btn, .moeqs-resume .moeqs-actions .moeqs-btn { flex: 1 1 100%; }
+}
+html[data-moeqs-theme="dark"] .moeqs-saved-dlg .moeqs-saved-pos, html[data-moeqs-theme="dark"] .moeqs-resume-info { color: #cbd5e1; }
